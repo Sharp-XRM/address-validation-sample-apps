@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Workflow WorkflowId="{cfca12be-535f-552f-a944-67cb18e55843}" Name="Verify contact address with Google Maps (sample)" Description="Runs when the address of a contact changes: checks it with Google Address Validation, writes the verified address back to the standard address columns, and adds a note with everything Google Maps returned. Part of the Google Maps sample app." xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <JsonFileName>/Workflows/VerifycontactaddresswithGoogleMapssample-CFCA12BE-535F-552F-A944-67CB18E55843.json</JsonFileName>
+  <Type>1</Type>
+  <Subprocess>0</Subprocess>
+  <Category>5</Category>
+  <Mode>0</Mode>
+  <Scope>4</Scope>
+  <OnDemand>0</OnDemand>
+  <TriggerOnCreate>0</TriggerOnCreate>
+  <TriggerOnDelete>0</TriggerOnDelete>
+  <AsyncAutodelete>0</AsyncAutodelete>
+  <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+  <StateCode>1</StateCode>
+  <StatusCode>2</StatusCode>
+  <RunAs>1</RunAs>
+  <IsTransacted>1</IsTransacted>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <IsCustomizable>1</IsCustomizable>
+  <BusinessProcessType>0</BusinessProcessType>
+  <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+  <ModernFlowType>0</ModernFlowType>
+  <PrimaryEntity>none</PrimaryEntity>
+  <LocalizedNames>
+    <LocalizedName languagecode="1033" description="Verify contact address with Google Maps (sample)" />
+  </LocalizedNames>
+  <Descriptions>
+    <Description languagecode="1033" description="Runs when the address of a contact changes: checks it with Google Address Validation, writes the verified address back to the standard address columns, and adds a note with everything Google Maps returned. Part of the Google Maps sample app." />
+  </Descriptions>
+</Workflow>

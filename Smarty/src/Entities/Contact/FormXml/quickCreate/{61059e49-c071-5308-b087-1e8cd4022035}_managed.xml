@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{61059e49-c071-5308-b087-1e8cd4022035}</formid>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <FormPresentation>0</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab name="qc_tab" id="{b4bf2603-37ad-5d7a-aafd-c0ffd41cde20}" IsUserDefined="0" showlabel="false" expanded="true">
+          <labels>
+            <label description="Quick create" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="33%">
+              <sections>
+                <section name="qc_details" showlabel="true" showbar="false" id="{b5f384f1-03fc-5202-bde3-bf6b2034a9b0}" IsUserDefined="1" layout="varwidth" columns="1" labelwidth="140" celllabelposition="Left">
+                  <labels>
+                    <label description="Details" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{78202053-7dbf-50dc-93a0-b8eae774ec40}" showlabel="true">
+                        <labels>
+                          <label description="First Name" languagecode="1033" />
+                        </labels>
+                        <control id="firstname" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="firstname" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2854f739-b34d-50d5-9ffe-b5c7eab1dbb3}" showlabel="true">
+                        <labels>
+                          <label description="Last Name" languagecode="1033" />
+                        </labels>
+                        <control id="lastname" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="lastname" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b692d9fc-cb68-5403-ac95-af4efd8e2dd8}" showlabel="true">
+                        <labels>
+                          <label description="Job Title" languagecode="1033" />
+                        </labels>
+                        <control id="jobtitle" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="jobtitle" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{808f1c56-891c-57d2-b038-99773d13af80}" showlabel="true">
+                        <labels>
+                          <label description="Company Name" languagecode="1033" />
+                        </labels>
+                        <control id="parentcustomerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="parentcustomerid" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{132fbbb7-bd3b-58d8-bbe0-b3a4a73ed28a}" showlabel="true">
+                        <labels>
+                          <label description="Email" languagecode="1033" />
+                        </labels>
+                        <control id="emailaddress1" classid="{ADA2203E-B4CD-49be-9DDF-234642B43B52}" datafieldname="emailaddress1" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{42f32b7e-314b-5fba-9f48-b8730ae1d0f2}" showlabel="true">
+                        <labels>
+                          <label description="Phone" languagecode="1033" />
+                        </labels>
+                        <control id="telephone1" classid="{8C10015A-B339-4982-9474-A95FE05631A5}" datafieldname="telephone1" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{121e4353-c952-5ead-917c-0efe0857ea6a}" showlabel="true">
+                        <labels>
+                          <label description="Mobile Phone" languagecode="1033" />
+                        </labels>
+                        <control id="mobilephone" classid="{8C10015A-B339-4982-9474-A95FE05631A5}" datafieldname="mobilephone" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="qc_search" showlabel="true" showbar="false" id="{f16a7b41-4cd2-53b1-8aae-30591df9aaa0}" IsUserDefined="1" layout="varwidth" columns="1" labelwidth="140" celllabelposition="Left">
+                  <labels>
+                    <label description="Address search" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{c3fc2dcf-3b72-5d56-bfc4-f1d6f754ccc2}" showlabel="false">
+                        <labels>
+                          <label description="Address search" languagecode="1033" />
+                        </labels>
+                        <control id="address1_line1" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="address1_line1" disabled="false" uniqueid="{b47668e4-9736-5986-ac2c-8dc39c8f215b}" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="33%">
+              <sections>
+                <section name="qc_standard" showlabel="true" showbar="false" id="{49c1a3b9-2d6c-5d13-9aa3-fd032c51266e}" IsUserDefined="1" layout="varwidth" columns="1" labelwidth="140" celllabelposition="Left">
+                  <labels>
+                    <label description="Validated address (standard columns)" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{943d0d99-5b74-5d8a-a054-1ade45fe68b5}" showlabel="true">
+                        <labels>
+                          <label description="Street 1" languagecode="1033" />
+                        </labels>
+                        <control id="address1_line11" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_line1" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b34355a6-b40b-5979-b1a8-8bf99d200a5d}" showlabel="true">
+                        <labels>
+                          <label description="Street 2" languagecode="1033" />
+                        </labels>
+                        <control id="address1_line2" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_line2" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{3c39478d-e586-5f93-b342-c31965d3c027}" showlabel="true">
+                        <labels>
+                          <label description="City" languagecode="1033" />
+                        </labels>
+                        <control id="address1_city" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_city" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c214dbfa-a5cd-5f38-8a71-634fcd987f8f}" showlabel="true">
+                        <labels>
+                          <label description="State/Province" languagecode="1033" />
+                        </labels>
+                        <control id="address1_stateorprovince" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_stateorprovince" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{0e5c8cb0-8208-56f8-b39a-58d6156d18f7}" showlabel="true">
+                        <labels>
+                          <label description="ZIP/Postal Code" languagecode="1033" />
+                        </labels>
+                        <control id="address1_postalcode" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_postalcode" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e9fa5e6f-0e3d-5575-b704-064d83222fae}" showlabel="true">
+                        <labels>
+                          <label description="Country/Region" languagecode="1033" />
+                        </labels>
+                        <control id="address1_country" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_country" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="33%">
+              <sections>
+                <section name="qc_outputs" showlabel="true" showbar="false" id="{2184d52f-cb20-5d9f-a5ae-16f088685aa7}" IsUserDefined="1" layout="varwidth" columns="1" labelwidth="140" celllabelposition="Left">
+                  <labels>
+                    <label description="Extra Smarty outputs (sample columns)" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{4dceb5bc-2626-5493-b38b-25be4ad7b7a5}" showlabel="true">
+                        <labels>
+                          <label description="Full Address" languagecode="1033" />
+                        </labels>
+                        <control id="sxs_sm_fulladdress" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="sxs_sm_fulladdress" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{248d8d58-fe6e-523a-984b-1990a4013a21}" showlabel="true">
+                        <labels>
+                          <label description="Company" languagecode="1033" />
+                        </labels>
+                        <control id="sxs_sm_company" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="sxs_sm_company" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <controlDescriptions>
+        <controlDescription forControl="{b47668e4-9736-5986-ac2c-8dc39c8f215b}">
+          <customControl id="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}">
+            <parameters>
+              <datafieldname>address1_line1</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="sharpxrm_SmartyAutocomplete.Autocomplete">
+            <parameters>
+              <apiConfigName type="SingleLine.Text" static="true">SharpXrmSample_Smarty</apiConfigName>
+              <street>address1_line1</street>
+              <unitNumber>address1_line2</unitNumber>
+              <city>address1_city</city>
+              <state>address1_stateorprovince</state>
+              <zip>address1_postalcode</zip>
+              <country>address1_country</country>
+              <fullAddress>sxs_sm_fulladdress</fullAddress>
+              <company>sxs_sm_company</company>
+              <defaultcountry type="SingleLine.Text" static="true">US</defaultcountry>
+              <topcountries type="SingleLine.Text" static="true">US,CA,GB</topcountries>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="sharpxrm_SmartyAutocomplete.Autocomplete">
+            <parameters>
+              <apiConfigName type="SingleLine.Text" static="true">SharpXrmSample_Smarty</apiConfigName>
+              <street>address1_line1</street>
+              <unitNumber>address1_line2</unitNumber>
+              <city>address1_city</city>
+              <state>address1_stateorprovince</state>
+              <zip>address1_postalcode</zip>
+              <country>address1_country</country>
+              <fullAddress>sxs_sm_fulladdress</fullAddress>
+              <company>sxs_sm_company</company>
+              <defaultcountry type="SingleLine.Text" static="true">US</defaultcountry>
+              <topcountries type="SingleLine.Text" static="true">US,CA,GB</topcountries>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="sharpxrm_SmartyAutocomplete.Autocomplete">
+            <parameters>
+              <apiConfigName type="SingleLine.Text" static="true">SharpXrmSample_Smarty</apiConfigName>
+              <street>address1_line1</street>
+              <unitNumber>address1_line2</unitNumber>
+              <city>address1_city</city>
+              <state>address1_stateorprovince</state>
+              <zip>address1_postalcode</zip>
+              <country>address1_country</country>
+              <fullAddress>sxs_sm_fulladdress</fullAddress>
+              <company>sxs_sm_company</company>
+              <defaultcountry type="SingleLine.Text" static="true">US</defaultcountry>
+              <topcountries type="SingleLine.Text" static="true">US,CA,GB</topcountries>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Contact Quick Create - Smarty Sample" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Sample quick create form for the Smarty address autocomplete control (shown by + New and the Create button in the sample app)." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

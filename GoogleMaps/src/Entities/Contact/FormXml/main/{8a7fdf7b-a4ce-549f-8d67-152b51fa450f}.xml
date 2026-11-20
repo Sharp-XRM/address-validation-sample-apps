@@ -1,0 +1,513 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{8a7fdf7b-a4ce-549f-8d67-152b51fa450f}</formid>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <FormPresentation>0</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form showImage="true" headerdensity="HighWithControls">
+      <tabs>
+        <tab name="sample_tab" id="{00a2058d-1167-5c8f-bcec-d461d41b21d7}" IsUserDefined="1" showlabel="true" expanded="true" verticallayout="true">
+          <labels>
+            <label description="Google Maps address sample" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="50%">
+              <sections>
+                <section name="sample_details" showlabel="true" showbar="false" id="{1611be3d-274d-51d7-bd4a-90624b5c35e6}" IsUserDefined="1" layout="varwidth" columns="1" labelwidth="140" celllabelposition="Left">
+                  <labels>
+                    <label description="Details" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{9df64cd4-9e3f-5b4e-aac6-9f10ab45f330}" showlabel="true">
+                        <labels>
+                          <label description="First Name" languagecode="1033" />
+                          <label description="Prénom" languagecode="1036" />
+                          <label description="Vorname" languagecode="1031" />
+                          <label description="Nombre de pila" languagecode="3082" />
+                        </labels>
+                        <control id="firstname" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="firstname" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{613d8c41-b1a3-504a-830f-04418f9525c3}" showlabel="true">
+                        <labels>
+                          <label description="Last Name" languagecode="1033" />
+                          <label description="Nom de famille" languagecode="1036" />
+                          <label description="Nachname" languagecode="1031" />
+                          <label description="Apellidos" languagecode="3082" />
+                        </labels>
+                        <control id="lastname" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="lastname" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{5f52d529-f36d-5050-9422-03b9fa5874f7}" showlabel="true">
+                        <labels>
+                          <label description="Job Title" languagecode="1033" />
+                          <label description="Fonction" languagecode="1036" />
+                          <label description="Position" languagecode="1031" />
+                          <label description="Puesto" languagecode="3082" />
+                        </labels>
+                        <control id="jobtitle" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="jobtitle" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{7d083614-57bb-5cdb-930e-4213f2269c1c}" showlabel="true">
+                        <labels>
+                          <label description="Company Name" languagecode="1033" />
+                          <label description="Nom de la société" languagecode="1036" />
+                          <label description="Firmenname" languagecode="1031" />
+                          <label description="Nombre de la compañía" languagecode="3082" />
+                        </labels>
+                        <control id="parentcustomerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="parentcustomerid" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{0b9bc857-d53f-5f99-9d87-1ba05db754d5}" showlabel="true">
+                        <labels>
+                          <label description="Email" languagecode="1033" />
+                          <label description="Courrier électronique" languagecode="1036" />
+                          <label description="E-Mail" languagecode="1031" />
+                          <label description="Correo electrónico" languagecode="3082" />
+                        </labels>
+                        <control id="emailaddress1" classid="{ADA2203E-B4CD-49be-9DDF-234642B43B52}" datafieldname="emailaddress1" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{02a5a631-979c-5737-b478-0c95ed575cc1}" showlabel="true">
+                        <labels>
+                          <label description="Phone" languagecode="1033" />
+                          <label description="Téléphone professionel" languagecode="1036" />
+                          <label description="Telefon (geschäftlich)" languagecode="1031" />
+                          <label description="Teléfono del trabajo" languagecode="3082" />
+                        </labels>
+                        <control id="telephone1" classid="{8C10015A-B339-4982-9474-A95FE05631A5}" datafieldname="telephone1" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d5b26e0f-9cd0-5178-b242-a96ec07940f6}" showlabel="true">
+                        <labels>
+                          <label description="Mobile Phone" languagecode="1033" />
+                          <label description="Téléphone mobile" languagecode="1036" />
+                          <label description="Mobiltelefon" languagecode="1031" />
+                          <label description="Teléfono móvil" languagecode="3082" />
+                        </labels>
+                        <control id="mobilephone" classid="{8C10015A-B339-4982-9474-A95FE05631A5}" datafieldname="mobilephone" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="sample_search" showlabel="true" showbar="false" id="{fabeae8a-5589-5c8b-8b5d-1e2dfbba1496}" IsUserDefined="1" layout="varwidth" columns="1" labelwidth="140" celllabelposition="Left">
+                  <labels>
+                    <label description="Address search" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{a38ac2c0-d841-57ab-8d43-3cc034d12296}" showlabel="false">
+                        <labels>
+                          <label description="Address search" languagecode="1033" />
+                          <label description="Adresse 1 : Rue 1" languagecode="1036" />
+                          <label description="Adresse 1: Straße 1" languagecode="1031" />
+                          <label description="Dirección 1: calle 1" languagecode="3082" />
+                        </labels>
+                        <control id="address1_line1" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="address1_line1" disabled="false" uniqueid="{8cbf2344-adcf-5972-a4d6-dbbab0037716}" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="sample_notes" showlabel="true" showbar="false" id="{368d0c97-fcad-5d95-8648-4d8590b6435c}" IsUserDefined="1" layout="varwidth" columns="1" labelwidth="140" celllabelposition="Left">
+                  <labels>
+                    <label description="Notes (results of the Google Maps verification flow)" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{9872b36c-a3dc-5458-8830-f6afa2ce0602}" showlabel="true">
+                        <labels>
+                          <label description="Last verified address" languagecode="1033" />
+                        </labels>
+                        <control id="sxs_gm_verifiedaddress" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="sxs_gm_verifiedaddress" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{a2d68364-f070-511f-84b0-c05db0aac766}" showlabel="false" rowspan="20" auto="false" colspan="1">
+                        <labels>
+                          <label description="Notes" languagecode="1033" />
+                        </labels>
+                        <control id="notescontrol" classid="{06375649-c143-495e-a496-c962e5b4488e}" disabled="false" />
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="50%">
+              <sections>
+                <section name="sample_standard" showlabel="true" showbar="false" id="{c372849a-73ef-5c21-9345-6f5956492712}" IsUserDefined="1" layout="varwidth" columns="1" labelwidth="140" celllabelposition="Left">
+                  <labels>
+                    <label description="Validated address (standard columns)" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{8b4c30af-10b7-5c80-8e70-61c16a4da5c9}" showlabel="true">
+                        <labels>
+                          <label description="Street 1" languagecode="1033" />
+                          <label description="Adresse 1 : Rue 1" languagecode="1036" />
+                          <label description="Adresse 1: Straße 1" languagecode="1031" />
+                          <label description="Dirección 1: calle 1" languagecode="3082" />
+                        </labels>
+                        <control id="address1_line11" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_line1" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{364a68ea-140f-5407-9fc4-389e1d32e507}" showlabel="true">
+                        <labels>
+                          <label description="Street 2" languagecode="1033" />
+                          <label description="Adresse 1 : Rue 2" languagecode="1036" />
+                          <label description="Adresse 1: Straße 2" languagecode="1031" />
+                          <label description="Dirección 1: calle 2" languagecode="3082" />
+                        </labels>
+                        <control id="address1_line2" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_line2" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{94ccc02f-ae11-58d7-96a7-d69a24f6310b}" showlabel="true">
+                        <labels>
+                          <label description="City" languagecode="1033" />
+                          <label description="Adresse 1 : Ville" languagecode="1036" />
+                          <label description="Adresse 1: Ort" languagecode="1031" />
+                          <label description="Dirección 1: ciudad" languagecode="3082" />
+                        </labels>
+                        <control id="address1_city" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_city" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{451851a6-7fa4-53ff-a0fe-15610eace634}" showlabel="true">
+                        <labels>
+                          <label description="County" languagecode="1033" />
+                          <label description="Adresse 1 : Commune" languagecode="1036" />
+                          <label description="Adresse 1: Verwaltungsbezirk" languagecode="1031" />
+                          <label description="Dirección 1: condado" languagecode="3082" />
+                        </labels>
+                        <control id="address1_county" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_county" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{0d2b06a2-89e3-57d1-afc9-139ac73568de}" showlabel="true">
+                        <labels>
+                          <label description="State/Province" languagecode="1033" />
+                          <label description="Adresse 1 : Département/province" languagecode="1036" />
+                          <label description="Adresse 1: Bundesland/Kanton" languagecode="1031" />
+                          <label description="Dirección 1: estado o provincia" languagecode="3082" />
+                        </labels>
+                        <control id="address1_stateorprovince" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_stateorprovince" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{fbb3c09f-382d-5412-b07a-8f0a538bd5e2}" showlabel="true">
+                        <labels>
+                          <label description="ZIP/Postal Code" languagecode="1033" />
+                          <label description="Adresse 1 : Code postal" languagecode="1036" />
+                          <label description="Adresse 1: Postleitzahl" languagecode="1031" />
+                          <label description="Dirección 1: código postal" languagecode="3082" />
+                        </labels>
+                        <control id="address1_postalcode" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_postalcode" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{674134e2-e4ac-5e3d-b029-f154ff472c75}" showlabel="true">
+                        <labels>
+                          <label description="Country/Region" languagecode="1033" />
+                          <label description="Adresse 1 : Pays/région" languagecode="1036" />
+                          <label description="Adresse 1: Land/Region" languagecode="1031" />
+                          <label description="Dirección 1: país o región" languagecode="3082" />
+                        </labels>
+                        <control id="address1_country" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_country" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f8049b64-b464-5a9b-b08b-3bc6b3420848}" showlabel="true">
+                        <labels>
+                          <label description="Latitude" languagecode="1033" />
+                          <label description="Adresse 1 : Latitude" languagecode="1036" />
+                          <label description="Adresse 1: Breite" languagecode="1031" />
+                          <label description="Dirección 1: latitud" languagecode="3082" />
+                        </labels>
+                        <control id="address1_latitude" classid="{0D2C745A-E5A8-4c8f-BA63-C6D3BB604660}" datafieldname="address1_latitude" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{76de40c0-e13f-5f68-bd10-793295b6aeb3}" showlabel="true">
+                        <labels>
+                          <label description="Longitude" languagecode="1033" />
+                          <label description="Adresse 1 : Longitude" languagecode="1036" />
+                          <label description="Adresse 1: Länge" languagecode="1031" />
+                          <label description="Dirección 1: longitud" languagecode="3082" />
+                        </labels>
+                        <control id="address1_longitude" classid="{0D2C745A-E5A8-4c8f-BA63-C6D3BB604660}" datafieldname="address1_longitude" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="sample_outputs" showlabel="true" showbar="false" id="{d6312e0a-5193-59e3-8f6f-359508ce076d}" IsUserDefined="1" layout="varwidth" columns="1" labelwidth="140" celllabelposition="Left">
+                  <labels>
+                    <label description="Extra Google Maps outputs (sample columns)" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{482b8b9e-3295-5631-9e52-26f85ba8c404}" showlabel="true">
+                        <labels>
+                          <label description="Full Address" languagecode="1033" />
+                        </labels>
+                        <control id="sxs_gm_fulladdress" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="sxs_gm_fulladdress" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{9a8e3f93-224d-52ca-98fc-557f67d6a81d}" showlabel="true">
+                        <labels>
+                          <label description="Postal Town" languagecode="1033" />
+                        </labels>
+                        <control id="sxs_gm_postaltown" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="sxs_gm_postaltown" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{6e069d3b-9b7b-5304-aec7-55772751950f}" showlabel="true">
+                        <labels>
+                          <label description="Admin Area Level 3" languagecode="1033" />
+                        </labels>
+                        <control id="sxs_gm_adminlevel3" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="sxs_gm_adminlevel3" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{7c2baee3-e9ca-5ad7-b01b-6cc46d94636c}" showlabel="true">
+                        <labels>
+                          <label description="Admin Area Level 4" languagecode="1033" />
+                        </labels>
+                        <control id="sxs_gm_adminlevel4" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="sxs_gm_adminlevel4" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2a153ef6-a22e-5d9e-9945-29b7d2cb7955}" showlabel="true">
+                        <labels>
+                          <label description="Admin Area Level 5" languagecode="1033" />
+                        </labels>
+                        <control id="sxs_gm_adminlevel5" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="sxs_gm_adminlevel5" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{eab5a1ad-54d1-5922-9a0b-902e0128937c}" showlabel="true">
+                        <labels>
+                          <label description="Admin Area Level 6" languagecode="1033" />
+                        </labels>
+                        <control id="sxs_gm_adminlevel6" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="sxs_gm_adminlevel6" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b5e7c9c6-48d2-5f07-a86b-cf20fbb11811}" showlabel="true">
+                        <labels>
+                          <label description="Business Name" languagecode="1033" />
+                        </labels>
+                        <control id="sxs_gm_businessname" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="sxs_gm_businessname" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f1c1749b-e933-5af0-8386-e770392c1893}" showlabel="true">
+                        <labels>
+                          <label description="Business Status" languagecode="1033" />
+                        </labels>
+                        <control id="sxs_gm_businessstatus" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="sxs_gm_businessstatus" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{a0e572a5-571d-5ad4-b4d2-86d310b4ab99}" showlabel="true">
+                        <labels>
+                          <label description="Business Phone" languagecode="1033" />
+                        </labels>
+                        <control id="sxs_gm_businessphone" classid="{8C10015A-B339-4982-9474-A95FE05631A5}" datafieldname="sxs_gm_businessphone" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{9f26aba3-718c-56a6-a0c7-3da77bf3dcb3}" showlabel="true">
+                        <labels>
+                          <label description="Business Website" languagecode="1033" />
+                        </labels>
+                        <control id="sxs_gm_businesswebsite" classid="{71716B6C-711E-476c-8AB8-5D11542BFB47}" datafieldname="sxs_gm_businesswebsite" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{fd879f97-9135-53d3-9953-614908be9f84}" showlabel="true">
+                        <labels>
+                          <label description="Google Maps Link" languagecode="1033" />
+                        </labels>
+                        <control id="sxs_gm_googlemapsurl" classid="{71716B6C-711E-476c-8AB8-5D11542BFB47}" datafieldname="sxs_gm_googlemapsurl" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{8635123b-0ffb-5991-a679-61414148e94e}" showlabel="true">
+                        <labels>
+                          <label description="Vicinity" languagecode="1033" />
+                        </labels>
+                        <control id="sxs_gm_vicinity" classid="{E0DECE4B-6FC8-4a8f-A065-082708572369}" datafieldname="sxs_gm_vicinity" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{85a229f3-f48b-57b6-a160-194e4cd1f866}" showlabel="true">
+                        <labels>
+                          <label description="Place Types" languagecode="1033" />
+                        </labels>
+                        <control id="sxs_gm_placetypes" classid="{E0DECE4B-6FC8-4a8f-A065-082708572369}" datafieldname="sxs_gm_placetypes" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{35b0bbd3-7087-541c-9178-08da4049db9b}" showlabel="true">
+                        <labels>
+                          <label description="Editorial Summary" languagecode="1033" />
+                        </labels>
+                        <control id="sxs_gm_editorialsummary" classid="{E0DECE4B-6FC8-4a8f-A065-082708572369}" datafieldname="sxs_gm_editorialsummary" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{ae015cd3-bee1-55cd-9a12-04c6aca09564}" columns="111" celllabelposition="Top" labelwidth="115">
+        <rows>
+          <row>
+            <cell id="{017f26d1-bcde-5509-850b-cb3c574483a6}" showlabel="true">
+              <labels>
+                <label description="Owner" languagecode="1033" />
+                <label description="Propriétaire" languagecode="1036" />
+                <label description="Besitzer" languagecode="1031" />
+                <label description="Propietario" languagecode="3082" />
+              </labels>
+              <control id="header_ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <controlDescriptions>
+        <controlDescription forControl="{8cbf2344-adcf-5972-a4d6-dbbab0037716}">
+          <customControl id="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}">
+            <parameters>
+              <datafieldname>address1_line1</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="sharpxrm_GoogleMapsAddressComplete.Autocomplete">
+            <parameters>
+              <apiConfigName type="SingleLine.Text" static="true">SharpXrmSample_GoogleMaps</apiConfigName>
+              <street>address1_line1</street>
+              <unitNumber>address1_line2</unitNumber>
+              <city>address1_city</city>
+              <county>address1_county</county>
+              <state>address1_stateorprovince</state>
+              <zip>address1_postalcode</zip>
+              <country>address1_country</country>
+              <latitude>address1_latitude</latitude>
+              <longitude>address1_longitude</longitude>
+              <fullAddress>sxs_gm_fulladdress</fullAddress>
+              <PostalTown>sxs_gm_postaltown</PostalTown>
+              <AdminLevel3>sxs_gm_adminlevel3</AdminLevel3>
+              <AdminLevel4>sxs_gm_adminlevel4</AdminLevel4>
+              <AdminLevel5>sxs_gm_adminlevel5</AdminLevel5>
+              <AdminLevel6>sxs_gm_adminlevel6</AdminLevel6>
+              <placesBusinessName>sxs_gm_businessname</placesBusinessName>
+              <placeBusinessStatus>sxs_gm_businessstatus</placeBusinessStatus>
+              <placesPhoneNumber>sxs_gm_businessphone</placesPhoneNumber>
+              <placesBusinessURL>sxs_gm_businesswebsite</placesBusinessURL>
+              <placesGoogleMapsURL>sxs_gm_googlemapsurl</placesGoogleMapsURL>
+              <placesVicinity>sxs_gm_vicinity</placesVicinity>
+              <placesTypes>sxs_gm_placetypes</placesTypes>
+              <placesEditorialSummary>sxs_gm_editorialsummary</placesEditorialSummary>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="sharpxrm_GoogleMapsAddressComplete.Autocomplete">
+            <parameters>
+              <apiConfigName type="SingleLine.Text" static="true">SharpXrmSample_GoogleMaps</apiConfigName>
+              <street>address1_line1</street>
+              <unitNumber>address1_line2</unitNumber>
+              <city>address1_city</city>
+              <county>address1_county</county>
+              <state>address1_stateorprovince</state>
+              <zip>address1_postalcode</zip>
+              <country>address1_country</country>
+              <latitude>address1_latitude</latitude>
+              <longitude>address1_longitude</longitude>
+              <fullAddress>sxs_gm_fulladdress</fullAddress>
+              <PostalTown>sxs_gm_postaltown</PostalTown>
+              <AdminLevel3>sxs_gm_adminlevel3</AdminLevel3>
+              <AdminLevel4>sxs_gm_adminlevel4</AdminLevel4>
+              <AdminLevel5>sxs_gm_adminlevel5</AdminLevel5>
+              <AdminLevel6>sxs_gm_adminlevel6</AdminLevel6>
+              <placesBusinessName>sxs_gm_businessname</placesBusinessName>
+              <placeBusinessStatus>sxs_gm_businessstatus</placeBusinessStatus>
+              <placesPhoneNumber>sxs_gm_businessphone</placesPhoneNumber>
+              <placesBusinessURL>sxs_gm_businesswebsite</placesBusinessURL>
+              <placesGoogleMapsURL>sxs_gm_googlemapsurl</placesGoogleMapsURL>
+              <placesVicinity>sxs_gm_vicinity</placesVicinity>
+              <placesTypes>sxs_gm_placetypes</placesTypes>
+              <placesEditorialSummary>sxs_gm_editorialsummary</placesEditorialSummary>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="sharpxrm_GoogleMapsAddressComplete.Autocomplete">
+            <parameters>
+              <apiConfigName type="SingleLine.Text" static="true">SharpXrmSample_GoogleMaps</apiConfigName>
+              <street>address1_line1</street>
+              <unitNumber>address1_line2</unitNumber>
+              <city>address1_city</city>
+              <county>address1_county</county>
+              <state>address1_stateorprovince</state>
+              <zip>address1_postalcode</zip>
+              <country>address1_country</country>
+              <latitude>address1_latitude</latitude>
+              <longitude>address1_longitude</longitude>
+              <fullAddress>sxs_gm_fulladdress</fullAddress>
+              <PostalTown>sxs_gm_postaltown</PostalTown>
+              <AdminLevel3>sxs_gm_adminlevel3</AdminLevel3>
+              <AdminLevel4>sxs_gm_adminlevel4</AdminLevel4>
+              <AdminLevel5>sxs_gm_adminlevel5</AdminLevel5>
+              <AdminLevel6>sxs_gm_adminlevel6</AdminLevel6>
+              <placesBusinessName>sxs_gm_businessname</placesBusinessName>
+              <placeBusinessStatus>sxs_gm_businessstatus</placeBusinessStatus>
+              <placesPhoneNumber>sxs_gm_businessphone</placesPhoneNumber>
+              <placesBusinessURL>sxs_gm_businesswebsite</placesBusinessURL>
+              <placesGoogleMapsURL>sxs_gm_googlemapsurl</placesGoogleMapsURL>
+              <placesVicinity>sxs_gm_vicinity</placesVicinity>
+              <placesTypes>sxs_gm_placetypes</placesTypes>
+              <placesEditorialSummary>sxs_gm_editorialsummary</placesEditorialSummary>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Contact - Google Maps Sample" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Sample form for the Google Maps address autocomplete control. Shows the standard address columns and every extra output of the control." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

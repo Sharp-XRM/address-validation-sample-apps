@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Workflow WorkflowId="{d2a91bb0-f4dc-59ad-9e97-3964ff2a01c8}" Name="Verify account address with Smarty (sample)" Description="Runs when the address of a account changes: checks it with Smarty US Street Address and International Street Address, writes the verified address back to the standard address columns, and adds a note with everything Smarty returned. Part of the Smarty sample app." xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <JsonFileName>/Workflows/VerifyaccountaddresswithSmartysample-D2A91BB0-F4DC-59AD-9E97-3964FF2A01C8.json</JsonFileName>
+  <Type>1</Type>
+  <Subprocess>0</Subprocess>
+  <Category>5</Category>
+  <Mode>0</Mode>
+  <Scope>4</Scope>
+  <OnDemand>0</OnDemand>
+  <TriggerOnCreate>0</TriggerOnCreate>
+  <TriggerOnDelete>0</TriggerOnDelete>
+  <AsyncAutodelete>0</AsyncAutodelete>
+  <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+  <StateCode>1</StateCode>
+  <StatusCode>2</StatusCode>
+  <RunAs>1</RunAs>
+  <IsTransacted>1</IsTransacted>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <IsCustomizable>1</IsCustomizable>
+  <BusinessProcessType>0</BusinessProcessType>
+  <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+  <ModernFlowType>0</ModernFlowType>
+  <PrimaryEntity>none</PrimaryEntity>
+  <LocalizedNames>
+    <LocalizedName languagecode="1033" description="Verify account address with Smarty (sample)" />
+  </LocalizedNames>
+  <Descriptions>
+    <Description languagecode="1033" description="Runs when the address of a account changes: checks it with Smarty US Street Address and International Street Address, writes the verified address back to the standard address columns, and adds a note with everything Smarty returned. Part of the Smarty sample app." />
+  </Descriptions>
+</Workflow>

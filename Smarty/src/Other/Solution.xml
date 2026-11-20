@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ImportExportXml version="9.2.26101.184" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26101.184" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.26101.00184">
+  <SolutionManifest>
+    <UniqueName>SharpXrmSampleSmarty</UniqueName>
+    <LocalizedNames>
+      <LocalizedName description="SharpXRM Sample - Smarty" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Sample app for the Smarty address autocomplete control of SharpXRM Address Validation for Dynamics 365. Requires the Address Validation for D365 solution." languagecode="1033" />
+    </Descriptions>
+    <Version>1.0.0.0</Version>
+    <Managed>2</Managed>
+    <Publisher>
+      <UniqueName>sharpxrmsamples</UniqueName>
+      <LocalizedNames>
+        <LocalizedName description="SharpXRM Samples" languagecode="1033" />
+      </LocalizedNames>
+      <Descriptions>
+        <Description description="Sample apps for SharpXRM Address Validation for Dynamics 365." languagecode="1033" />
+      </Descriptions>
+      <EMailAddress xsi:nil="true"></EMailAddress>
+      <SupportingWebsiteUrl>https://www.sharpxrm.com</SupportingWebsiteUrl>
+      <CustomizationPrefix>sxs</CustomizationPrefix>
+      <CustomizationOptionValuePrefix>52229</CustomizationOptionValuePrefix>
+      <Addresses>
+        <Address>
+          <AddressNumber>1</AddressNumber>
+          <AddressTypeCode>1</AddressTypeCode>
+          <City xsi:nil="true"></City>
+          <County xsi:nil="true"></County>
+          <Country xsi:nil="true"></Country>
+          <Fax xsi:nil="true"></Fax>
+          <FreightTermsCode xsi:nil="true"></FreightTermsCode>
+          <ImportSequenceNumber xsi:nil="true"></ImportSequenceNumber>
+          <Latitude xsi:nil="true"></Latitude>
+          <Line1 xsi:nil="true"></Line1>
+          <Line2 xsi:nil="true"></Line2>
+          <Line3 xsi:nil="true"></Line3>
+          <Longitude xsi:nil="true"></Longitude>
+          <Name xsi:nil="true"></Name>
+          <PostalCode xsi:nil="true"></PostalCode>
+          <PostOfficeBox xsi:nil="true"></PostOfficeBox>
+          <PrimaryContactName xsi:nil="true"></PrimaryContactName>
+          <ShippingMethodCode>1</ShippingMethodCode>
+          <StateOrProvince xsi:nil="true"></StateOrProvince>
+          <Telephone1 xsi:nil="true"></Telephone1>
+          <Telephone2 xsi:nil="true"></Telephone2>
+          <Telephone3 xsi:nil="true"></Telephone3>
+          <TimeZoneRuleVersionNumber xsi:nil="true"></TimeZoneRuleVersionNumber>
+          <UPSZone xsi:nil="true"></UPSZone>
+          <UTCOffset xsi:nil="true"></UTCOffset>
+          <UTCConversionTimeZoneCode xsi:nil="true"></UTCConversionTimeZoneCode>
+        </Address>
+        <Address>
+          <AddressNumber>2</AddressNumber>
+          <AddressTypeCode>1</AddressTypeCode>
+          <City xsi:nil="true"></City>
+          <County xsi:nil="true"></County>
+          <Country xsi:nil="true"></Country>
+          <Fax xsi:nil="true"></Fax>
+          <FreightTermsCode xsi:nil="true"></FreightTermsCode>
+          <ImportSequenceNumber xsi:nil="true"></ImportSequenceNumber>
+          <Latitude xsi:nil="true"></Latitude>
+          <Line1 xsi:nil="true"></Line1>
+          <Line2 xsi:nil="true"></Line2>
+          <Line3 xsi:nil="true"></Line3>
+          <Longitude xsi:nil="true"></Longitude>
+          <Name xsi:nil="true"></Name>
+          <PostalCode xsi:nil="true"></PostalCode>
+          <PostOfficeBox xsi:nil="true"></PostOfficeBox>
+          <PrimaryContactName xsi:nil="true"></PrimaryContactName>
+          <ShippingMethodCode>1</ShippingMethodCode>
+          <StateOrProvince xsi:nil="true"></StateOrProvince>
+          <Telephone1 xsi:nil="true"></Telephone1>
+          <Telephone2 xsi:nil="true"></Telephone2>
+          <Telephone3 xsi:nil="true"></Telephone3>
+          <TimeZoneRuleVersionNumber xsi:nil="true"></TimeZoneRuleVersionNumber>
+          <UPSZone xsi:nil="true"></UPSZone>
+          <UTCOffset xsi:nil="true"></UTCOffset>
+          <UTCConversionTimeZoneCode xsi:nil="true"></UTCConversionTimeZoneCode>
+        </Address>
+      </Addresses>
+    </Publisher>
+    <RootComponents>
+      <RootComponent type="1" schemaName="account" behavior="1" />
+      <RootComponent type="1" schemaName="contact" behavior="1" />
+      <RootComponent type="29" id="{c6ade9e9-9404-59cf-b6d1-2c31c04f2f90}" behavior="0" />
+      <RootComponent type="29" id="{d2a91bb0-f4dc-59ad-9e97-3964ff2a01c8}" behavior="0" />
+      <RootComponent type="61" schemaName="sxs_/smarty/setup.html" behavior="0" />
+      <RootComponent type="62" schemaName="sxs_SmartySample" behavior="0" />
+      <RootComponent type="80" schemaName="sxs_SmartySample" behavior="0" />
+    </RootComponents>
+    <MissingDependencies>
+      <MissingDependency>
+        <Required type="1" schemaName="sharpxrm_sharpxrmconfiguration" displayName="API Configuration" solution="Active" />
+        <Dependent type="29" displayName="Verify contact address with Smarty (sample)" id="{c6ade9e9-9404-59cf-b6d1-2c31c04f2f90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="sharpxrm_sharpxrmconfiguration" displayName="API Configuration" solution="Active" />
+        <Dependent type="29" displayName="Verify account address with Smarty (sample)" id="{d2a91bb0-f4dc-59ad-9e97-3964ff2a01c8}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="msdyn_/Images/AppModule_Default_Icon.png" displayName="msdyn_/Images/AppModule_Default_Icon.png" solution="AppModuleWebResources (2.5)" />
+        <Dependent type="80" schemaName="sxs_SmartySample" displayName="Smarty Address Sample" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="sharpxrm_SmartyAutocomplete.Autocomplete" displayName="sharpxrm_SmartyAutocomplete.Autocomplete" solution="Active" />
+        <Dependent type="60" displayName="Contact Quick Create - Smarty Sample" parentDisplayName="Contact" id="{61059e49-c071-5308-b087-1e8cd4022035}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="sharpxrm_SmartyAutocomplete.Autocomplete" displayName="sharpxrm_SmartyAutocomplete.Autocomplete" solution="Active" />
+        <Dependent type="60" displayName="Account Quick Create - Smarty Sample" parentDisplayName="Account" id="{70d4a485-0e6a-59c7-904e-ed541be42f33}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="sharpxrm_SmartyAutocomplete.Autocomplete" displayName="sharpxrm_SmartyAutocomplete.Autocomplete" solution="Active" />
+        <Dependent type="60" displayName="Contact - Smarty Sample" parentDisplayName="Contact" id="{8fe3cb2d-1dbf-577a-9e9a-5fcf740e9ea8}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="sharpxrm_SmartyAutocomplete.Autocomplete" displayName="sharpxrm_SmartyAutocomplete.Autocomplete" solution="Active" />
+        <Dependent type="60" displayName="Account - Smarty Sample" parentDisplayName="Account" id="{963761cb-d372-541d-8872-c6adfe9081ce}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="SettingDefinition" displayName="AppChannel" solution="msdyn_AppFrameworkInfraExtensions (1.0.0.27)" id.uniquename="AppChannel">
+          <package appName="PowerAppsAppFramework Package" version="1.0.0.27">PowerAppsAppFramework_Anchor (1.0.0.27)</package>
+        </Required>
+        <Dependent type="AppSetting" displayName="parentappmoduleid.uniquename=sxs_SmartySample,settingdefinitionid.uniquename=AppChannel" id.parentappmoduleid.uniquename="sxs_SmartySample" id.settingdefinitionid.uniquename="AppChannel" />
+      </MissingDependency>
+    </MissingDependencies>
+  </SolutionManifest>
+</ImportExportXml>

@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{2073d996-12cb-54d3-94a2-3fcf5acbbe56}</formid>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <FormPresentation>0</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form showImage="true" headerdensity="HighWithControls">
+      <tabs>
+        <tab name="sample_tab" id="{df065389-b366-57ea-b84d-fe83fec2f75c}" IsUserDefined="1" showlabel="true" expanded="true" verticallayout="true">
+          <labels>
+            <label description="Byteplant address sample" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="50%">
+              <sections>
+                <section name="sample_details" showlabel="true" showbar="false" id="{8e247815-17e0-580b-9aff-e4ab8d72fee3}" IsUserDefined="1" layout="varwidth" columns="1" labelwidth="140" celllabelposition="Left">
+                  <labels>
+                    <label description="Details" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{652725eb-f9c2-5f4d-9c18-d71317d7f3d3}" showlabel="true">
+                        <labels>
+                          <label description="Vorname" languagecode="1031" />
+                          <label description="First Name" languagecode="1033" />
+                          <label description="Prénom" languagecode="1036" />
+                          <label description="Nombre de pila" languagecode="3082" />
+                        </labels>
+                        <control id="firstname" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="firstname" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f64270b9-65ce-5b1f-9b36-af374fb95929}" showlabel="true">
+                        <labels>
+                          <label description="Nachname" languagecode="1031" />
+                          <label description="Last Name" languagecode="1033" />
+                          <label description="Nom de famille" languagecode="1036" />
+                          <label description="Apellidos" languagecode="3082" />
+                        </labels>
+                        <control id="lastname" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="lastname" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{6985b633-617d-5cbd-9f81-12ee292597c6}" showlabel="true">
+                        <labels>
+                          <label description="Position" languagecode="1031" />
+                          <label description="Job Title" languagecode="1033" />
+                          <label description="Fonction" languagecode="1036" />
+                          <label description="Puesto" languagecode="3082" />
+                        </labels>
+                        <control id="jobtitle" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="jobtitle" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{eba14eca-24cc-530b-bda9-c909e7d90532}" showlabel="true">
+                        <labels>
+                          <label description="Firmenname" languagecode="1031" />
+                          <label description="Company Name" languagecode="1033" />
+                          <label description="Nom de la société" languagecode="1036" />
+                          <label description="Nombre de la compañía" languagecode="3082" />
+                        </labels>
+                        <control id="parentcustomerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="parentcustomerid" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{35a0e950-2641-56ce-813c-649824cc3587}" showlabel="true">
+                        <labels>
+                          <label description="E-Mail" languagecode="1031" />
+                          <label description="Email" languagecode="1033" />
+                          <label description="Courrier électronique" languagecode="1036" />
+                          <label description="Correo electrónico" languagecode="3082" />
+                        </labels>
+                        <control id="emailaddress1" classid="{ADA2203E-B4CD-49be-9DDF-234642B43B52}" datafieldname="emailaddress1" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{8f400040-8a6b-546d-bd9f-cba84b855264}" showlabel="true">
+                        <labels>
+                          <label description="Telefon (geschäftlich)" languagecode="1031" />
+                          <label description="Phone" languagecode="1033" />
+                          <label description="Téléphone professionel" languagecode="1036" />
+                          <label description="Teléfono del trabajo" languagecode="3082" />
+                        </labels>
+                        <control id="telephone1" classid="{8C10015A-B339-4982-9474-A95FE05631A5}" datafieldname="telephone1" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{175e978b-1c55-5204-af94-f56a4c10c3f6}" showlabel="true">
+                        <labels>
+                          <label description="Mobiltelefon" languagecode="1031" />
+                          <label description="Mobile Phone" languagecode="1033" />
+                          <label description="Téléphone mobile" languagecode="1036" />
+                          <label description="Teléfono móvil" languagecode="3082" />
+                        </labels>
+                        <control id="mobilephone" classid="{8C10015A-B339-4982-9474-A95FE05631A5}" datafieldname="mobilephone" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="sample_search" showlabel="true" showbar="false" id="{d35cbdfb-886c-5485-b1c0-6e94c0f58f2d}" IsUserDefined="1" layout="varwidth" columns="1" labelwidth="140" celllabelposition="Left">
+                  <labels>
+                    <label description="Address search" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{58b266c7-ed75-5201-bfb5-779485d077cc}" showlabel="false">
+                        <labels>
+                          <label description="Adresse 1: Straße 1" languagecode="1031" />
+                          <label description="Address search" languagecode="1033" />
+                          <label description="Adresse 1 : Rue 1" languagecode="1036" />
+                          <label description="Dirección 1: calle 1" languagecode="3082" />
+                        </labels>
+                        <control id="address1_line1" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="address1_line1" disabled="false" uniqueid="{0481972b-bf36-58c1-a62d-f45d6301118c}" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="sample_notes" showlabel="true" showbar="false" id="{a7bffbb4-4f41-5f40-bafa-27ddf018c2cb}" IsUserDefined="1" layout="varwidth" columns="1" labelwidth="140" celllabelposition="Left">
+                  <labels>
+                    <label description="Notes (results of the Byteplant verification flow)" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{8e9abad7-eb95-58e4-ae7d-9ed835b1b27f}" showlabel="true">
+                        <labels>
+                          <label description="Last verified address" languagecode="1033" />
+                        </labels>
+                        <control id="sxs_bp_verifiedaddress" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="sxs_bp_verifiedaddress" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d56b2363-aa94-5f62-b745-77995b7fd15e}" showlabel="false" rowspan="20" auto="false" colspan="1">
+                        <labels>
+                          <label description="Notes" languagecode="1033" />
+                        </labels>
+                        <control id="notescontrol" classid="{06375649-c143-495e-a496-c962e5b4488e}" disabled="false" />
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="50%">
+              <sections>
+                <section name="sample_standard" showlabel="true" showbar="false" id="{14405c53-be07-5f56-a984-c0478457379b}" IsUserDefined="1" layout="varwidth" columns="1" labelwidth="140" celllabelposition="Left">
+                  <labels>
+                    <label description="Validated address (standard columns)" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{502900e6-14cd-5ff6-b4df-1a3f0187e202}" showlabel="true">
+                        <labels>
+                          <label description="Adresse 1: Straße 1" languagecode="1031" />
+                          <label description="Street 1" languagecode="1033" />
+                          <label description="Adresse 1 : Rue 1" languagecode="1036" />
+                          <label description="Dirección 1: calle 1" languagecode="3082" />
+                        </labels>
+                        <control id="address1_line11" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_line1" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e8553300-06fb-551b-9718-85babc48ae17}" showlabel="true">
+                        <labels>
+                          <label description="Adresse 1: Straße 2" languagecode="1031" />
+                          <label description="Street 2" languagecode="1033" />
+                          <label description="Adresse 1 : Rue 2" languagecode="1036" />
+                          <label description="Dirección 1: calle 2" languagecode="3082" />
+                        </labels>
+                        <control id="address1_line2" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_line2" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{dc740772-34c4-5829-a020-e5859256a65f}" showlabel="true">
+                        <labels>
+                          <label description="Adresse 1: Ort" languagecode="1031" />
+                          <label description="City" languagecode="1033" />
+                          <label description="Adresse 1 : Ville" languagecode="1036" />
+                          <label description="Dirección 1: ciudad" languagecode="3082" />
+                        </labels>
+                        <control id="address1_city" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_city" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d452ba0b-b009-593f-b50b-7b423813bcb3}" showlabel="true">
+                        <labels>
+                          <label description="Adresse 1: Bundesland/Kanton" languagecode="1031" />
+                          <label description="State/Province" languagecode="1033" />
+                          <label description="Adresse 1 : Département/province" languagecode="1036" />
+                          <label description="Dirección 1: estado o provincia" languagecode="3082" />
+                        </labels>
+                        <control id="address1_stateorprovince" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_stateorprovince" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{8d6819c2-68b8-55c8-aec0-689132cf724e}" showlabel="true">
+                        <labels>
+                          <label description="Adresse 1: Postleitzahl" languagecode="1031" />
+                          <label description="ZIP/Postal Code" languagecode="1033" />
+                          <label description="Adresse 1 : Code postal" languagecode="1036" />
+                          <label description="Dirección 1: código postal" languagecode="3082" />
+                        </labels>
+                        <control id="address1_postalcode" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_postalcode" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{80495ff0-e00d-5bab-a6c1-4c815e64b530}" showlabel="true">
+                        <labels>
+                          <label description="Adresse 1: Land/Region" languagecode="1031" />
+                          <label description="Country/Region" languagecode="1033" />
+                          <label description="Adresse 1 : Pays/région" languagecode="1036" />
+                          <label description="Dirección 1: país o región" languagecode="3082" />
+                        </labels>
+                        <control id="address1_country" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_country" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="sample_outputs" showlabel="true" showbar="false" id="{c197c8c9-d2f5-5d82-bc5b-9ecf3cb9c320}" IsUserDefined="1" layout="varwidth" columns="1" labelwidth="140" celllabelposition="Left">
+                  <labels>
+                    <label description="Extra Byteplant outputs (sample columns)" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{bd72268a-c581-5d54-98ed-6b0166d56157}" showlabel="true">
+                        <labels>
+                          <label description="Full Address" languagecode="1033" />
+                        </labels>
+                        <control id="sxs_bp_fulladdress" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="sxs_bp_fulladdress" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ce91b535-959c-5d3c-b452-1c44e960d4d9}" showlabel="true">
+                        <labels>
+                          <label description="Company" languagecode="1033" />
+                        </labels>
+                        <control id="sxs_bp_company" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="sxs_bp_company" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{7e44b7b1-defc-5549-8eac-1b3fda8950eb}" columns="111" celllabelposition="Top" labelwidth="115">
+        <rows>
+          <row>
+            <cell id="{f36cf3f0-0fc9-5275-8394-14e2a3a15f7f}" showlabel="true">
+              <labels>
+                <label description="Besitzer" languagecode="1031" />
+                <label description="Owner" languagecode="1033" />
+                <label description="Propriétaire" languagecode="1036" />
+                <label description="Propietario" languagecode="3082" />
+              </labels>
+              <control id="header_ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <controlDescriptions>
+        <controlDescription forControl="{0481972b-bf36-58c1-a62d-f45d6301118c}">
+          <customControl id="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}">
+            <parameters>
+              <datafieldname>address1_line1</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="sharpxrm_ByteplantAutocomplete.Autocomplete">
+            <parameters>
+              <apiConfigName type="SingleLine.Text" static="true">SharpXrmSample_Byteplant</apiConfigName>
+              <street>address1_line1</street>
+              <unitNumber>address1_line2</unitNumber>
+              <city>address1_city</city>
+              <state>address1_stateorprovince</state>
+              <zip>address1_postalcode</zip>
+              <country>address1_country</country>
+              <fullAddress>sxs_bp_fulladdress</fullAddress>
+              <company>sxs_bp_company</company>
+              <defaultcountry type="SingleLine.Text" static="true">US</defaultcountry>
+              <topcountries type="SingleLine.Text" static="true">US,CA,GB,AU</topcountries>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="sharpxrm_ByteplantAutocomplete.Autocomplete">
+            <parameters>
+              <apiConfigName type="SingleLine.Text" static="true">SharpXrmSample_Byteplant</apiConfigName>
+              <street>address1_line1</street>
+              <unitNumber>address1_line2</unitNumber>
+              <city>address1_city</city>
+              <state>address1_stateorprovince</state>
+              <zip>address1_postalcode</zip>
+              <country>address1_country</country>
+              <fullAddress>sxs_bp_fulladdress</fullAddress>
+              <company>sxs_bp_company</company>
+              <defaultcountry type="SingleLine.Text" static="true">US</defaultcountry>
+              <topcountries type="SingleLine.Text" static="true">US,CA,GB,AU</topcountries>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="sharpxrm_ByteplantAutocomplete.Autocomplete">
+            <parameters>
+              <apiConfigName type="SingleLine.Text" static="true">SharpXrmSample_Byteplant</apiConfigName>
+              <street>address1_line1</street>
+              <unitNumber>address1_line2</unitNumber>
+              <city>address1_city</city>
+              <state>address1_stateorprovince</state>
+              <zip>address1_postalcode</zip>
+              <country>address1_country</country>
+              <fullAddress>sxs_bp_fulladdress</fullAddress>
+              <company>sxs_bp_company</company>
+              <defaultcountry type="SingleLine.Text" static="true">US</defaultcountry>
+              <topcountries type="SingleLine.Text" static="true">US,CA,GB,AU</topcountries>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Contact - Byteplant Sample" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Sample form for the Byteplant address autocomplete control. Shows the standard address columns and every extra output of the control." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

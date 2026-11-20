@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Workflow WorkflowId="{872369fa-3da1-5e75-8a0b-c14f5ccfc0e1}" Name="Verify account address with Azure Maps (sample)" Description="Runs when the address of a account changes: checks it with Azure Maps address search, writes the verified address back to the standard address columns, and adds a note with everything Azure Maps returned. Part of the Azure Maps sample app." xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <JsonFileName>/Workflows/VerifyaccountaddresswithAzureMapssample-872369FA-3DA1-5E75-8A0B-C14F5CCFC0E1.json</JsonFileName>
+  <Type>1</Type>
+  <Subprocess>0</Subprocess>
+  <Category>5</Category>
+  <Mode>0</Mode>
+  <Scope>4</Scope>
+  <OnDemand>0</OnDemand>
+  <TriggerOnCreate>0</TriggerOnCreate>
+  <TriggerOnDelete>0</TriggerOnDelete>
+  <AsyncAutodelete>0</AsyncAutodelete>
+  <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+  <StateCode>1</StateCode>
+  <StatusCode>2</StatusCode>
+  <RunAs>1</RunAs>
+  <IsTransacted>1</IsTransacted>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <IsCustomizable>1</IsCustomizable>
+  <BusinessProcessType>0</BusinessProcessType>
+  <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+  <ModernFlowType>0</ModernFlowType>
+  <PrimaryEntity>none</PrimaryEntity>
+  <LocalizedNames>
+    <LocalizedName languagecode="1033" description="Verify account address with Azure Maps (sample)" />
+  </LocalizedNames>
+  <Descriptions>
+    <Description languagecode="1033" description="Runs when the address of a account changes: checks it with Azure Maps address search, writes the verified address back to the standard address columns, and adds a note with everything Azure Maps returned. Part of the Azure Maps sample app." />
+  </Descriptions>
+</Workflow>

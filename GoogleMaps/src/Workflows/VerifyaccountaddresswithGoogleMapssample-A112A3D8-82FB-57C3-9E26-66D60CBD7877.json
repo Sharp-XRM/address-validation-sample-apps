@@ -1,0 +1,323 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "sxs_googlemaps_dataverse"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_an_address_is_added_or_changed": {
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "account",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "address1_line1,address1_line2,address1_city,address1_county,address1_stateorprovince,address1_postalcode,address1_country"
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "conditions": [
+            {
+              "expression": "@and(not(empty(coalesce(triggerOutputs()?['body/sxs_gm_fulladdress'],''))), not(empty(coalesce(triggerOutputs()?['body/address1_line1'],''))), not(equals(coalesce(triggerOutputs()?['body/sxs_gm_verifiedaddress'],''),'PENDING')), not(equals(coalesce(triggerOutputs()?['body/sxs_gm_verifiedaddress'],''),concat(coalesce(triggerOutputs()?['body/address1_line1'],''),'|',coalesce(triggerOutputs()?['body/address1_line2'],''),'|',coalesce(triggerOutputs()?['body/address1_city'],''),'|',coalesce(triggerOutputs()?['body/address1_county'],''),'|',coalesce(triggerOutputs()?['body/address1_stateorprovince'],''),'|',coalesce(triggerOutputs()?['body/address1_postalcode'],''),'|',coalesce(triggerOutputs()?['body/address1_country'],'')))))"
+            }
+          ]
+        }
+      },
+      "actions": {
+        "Initialize_result": {
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Result",
+                "type": "object",
+                "value": {}
+              }
+            ]
+          },
+          "runAfter": {}
+        },
+        "Mark_as_being_verified": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "accounts",
+              "recordId": "@triggerOutputs()?['body/accountid']",
+              "item/sxs_gm_verifiedaddress": "PENDING"
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "runAfter": {
+            "Initialize_result": [
+              "Succeeded"
+            ]
+          }
+        },
+        "Find_API_configuration": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "sharpxrm_sharpxrmconfigurations",
+              "$select": "sharpxrm_sharpxrmconfigurationid",
+              "$filter": "sharpxrm_name eq 'SharpXrmSample_GoogleMaps'",
+              "$top": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "runAfter": {
+            "Mark_as_being_verified": [
+              "Succeeded"
+            ]
+          }
+        },
+        "Verify": {
+          "type": "Scope",
+          "actions": {
+            "Verify_the_address": {
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "PerformUnboundAction",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "actionName": "sharpxrm_VerifyWithGoogleAddressValidation",
+                  "item/APIConfiguration": {
+                    "@@odata.type": "Microsoft.Dynamics.CRM.sharpxrm_sharpxrmconfiguration",
+                    "sharpxrm_sharpxrmconfigurationid": "@first(outputs('Find_API_configuration')?['body/value'])?['sharpxrm_sharpxrmconfigurationid']"
+                  },
+                  "item/InputStreetAddress": "@triggerOutputs()?['body/address1_line1']",
+                  "item/InputUnitNumber": "@triggerOutputs()?['body/address1_line2']",
+                  "item/InputCity": "@triggerOutputs()?['body/address1_city']",
+                  "item/InputCounty": "@triggerOutputs()?['body/address1_county']",
+                  "item/InputState": "@triggerOutputs()?['body/address1_stateorprovince']",
+                  "item/InputZipPostalCode": "@triggerOutputs()?['body/address1_postalcode']",
+                  "item/InputCountry": "@triggerOutputs()?['body/address1_country']",
+                  "item/RecordLogicalName": "account",
+                  "item/RecordId": "@{triggerOutputs()?['body/accountid']}"
+                },
+                "authentication": "@parameters('$authentication')"
+              },
+              "runAfter": {}
+            },
+            "Keep_the_result": {
+              "type": "SetVariable",
+              "inputs": {
+                "name": "Result",
+                "value": "@body('Verify_the_address')"
+              },
+              "runAfter": {
+                "Verify_the_address": [
+                  "Succeeded"
+                ]
+              }
+            },
+            "New_address": {
+              "type": "Compose",
+              "inputs": {
+                "line1": "@if(empty(variables('Result')?['StreetAddress']), triggerOutputs()?['body/address1_line1'], variables('Result')?['StreetAddress'])",
+                "line2": "@if(empty(variables('Result')?['UnitNumber']), triggerOutputs()?['body/address1_line2'], variables('Result')?['UnitNumber'])",
+                "city": "@if(empty(variables('Result')?['City']), triggerOutputs()?['body/address1_city'], variables('Result')?['City'])",
+                "county": "@if(empty(variables('Result')?['County']), triggerOutputs()?['body/address1_county'], variables('Result')?['County'])",
+                "state": "@if(empty(variables('Result')?['State']), triggerOutputs()?['body/address1_stateorprovince'], variables('Result')?['State'])",
+                "zip": "@if(empty(variables('Result')?['ZipPostalCode']), triggerOutputs()?['body/address1_postalcode'], if(empty(variables('Result')?['ExtendedZipPostalCode']), variables('Result')?['ZipPostalCode'], if(contains(variables('Result')?['ExtendedZipPostalCode'],'-'), variables('Result')?['ExtendedZipPostalCode'], concat(variables('Result')?['ZipPostalCode'],'-',variables('Result')?['ExtendedZipPostalCode']))))",
+                "country": "@if(empty(variables('Result')?['Country']), triggerOutputs()?['body/address1_country'], variables('Result')?['Country'])",
+                "latitude": "@if(equals(float(coalesce(variables('Result')?['Latitude'],0)),float(0)), triggerOutputs()?['body/address1_latitude'], variables('Result')?['Latitude'])",
+                "longitude": "@if(equals(float(coalesce(variables('Result')?['Longitude'],0)),float(0)), triggerOutputs()?['body/address1_longitude'], variables('Result')?['Longitude'])"
+              },
+              "runAfter": {
+                "Keep_the_result": [
+                  "Succeeded"
+                ]
+              }
+            },
+            "Was_a_match_found": {
+              "type": "If",
+              "expression": {
+                "and": [
+                  {
+                    "equals": [
+                      "@variables('Result')?['ResultFound']",
+                      "Success"
+                    ]
+                  }
+                ]
+              },
+              "actions": {
+                "Write_the_verified_address": {
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "accounts",
+                      "recordId": "@triggerOutputs()?['body/accountid']",
+                      "item/address1_line1": "@outputs('New_address')?['line1']",
+                      "item/address1_line2": "@outputs('New_address')?['line2']",
+                      "item/address1_city": "@outputs('New_address')?['city']",
+                      "item/address1_county": "@outputs('New_address')?['county']",
+                      "item/address1_stateorprovince": "@outputs('New_address')?['state']",
+                      "item/address1_postalcode": "@outputs('New_address')?['zip']",
+                      "item/address1_country": "@outputs('New_address')?['country']",
+                      "item/address1_latitude": "@outputs('New_address')?['latitude']",
+                      "item/address1_longitude": "@outputs('New_address')?['longitude']",
+                      "item/sxs_gm_verifiedaddress": "@concat(coalesce(outputs('New_address')?['line1'],''),'|',coalesce(outputs('New_address')?['line2'],''),'|',coalesce(outputs('New_address')?['city'],''),'|',coalesce(outputs('New_address')?['county'],''),'|',coalesce(outputs('New_address')?['state'],''),'|',coalesce(outputs('New_address')?['zip'],''),'|',coalesce(outputs('New_address')?['country'],''))"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  },
+                  "runAfter": {}
+                }
+              },
+              "else": {
+                "actions": {
+                  "Remember_the_checked_address": {
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "UpdateRecord",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "accounts",
+                        "recordId": "@triggerOutputs()?['body/accountid']",
+                        "item/sxs_gm_verifiedaddress": "@concat(coalesce(triggerOutputs()?['body/address1_line1'],''),'|',coalesce(triggerOutputs()?['body/address1_line2'],''),'|',coalesce(triggerOutputs()?['body/address1_city'],''),'|',coalesce(triggerOutputs()?['body/address1_county'],''),'|',coalesce(triggerOutputs()?['body/address1_stateorprovince'],''),'|',coalesce(triggerOutputs()?['body/address1_postalcode'],''),'|',coalesce(triggerOutputs()?['body/address1_country'],''))"
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    },
+                    "runAfter": {}
+                  }
+                }
+              },
+              "runAfter": {
+                "New_address": [
+                  "Succeeded"
+                ]
+              }
+            },
+            "Add_a_note_with_the_full_result": {
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "annotations",
+                  "item/subject": "Address verification (Google Maps): @{variables('Result')?['ResultFound']} @{variables('Result')?['VerificationStatus']}",
+                  "item/notetext": "Google Maps checked this address on @{utcNow()} using sharpxrm_VerifyWithGoogleAddressValidation.\n\nAddress sent\nStreet: @{triggerOutputs()?['body/address1_line1']}\nUnit: @{triggerOutputs()?['body/address1_line2']}\nCity: @{triggerOutputs()?['body/address1_city']}\nCounty: @{triggerOutputs()?['body/address1_county']}\nState/Province: @{triggerOutputs()?['body/address1_stateorprovince']}\nZIP/Postal code: @{triggerOutputs()?['body/address1_postalcode']}\nCountry: @{triggerOutputs()?['body/address1_country']}\n\nResult returned by Google Maps\nResultFound: @{variables('Result')?['ResultFound']}\nConfidence: @{variables('Result')?['Confidence']}\nVerificationDetails: @{variables('Result')?['VerificationDetails']}\nEntityType: @{variables('Result')?['EntityType']}\nStreetAddress: @{variables('Result')?['StreetAddress']}\nUnitNumber: @{variables('Result')?['UnitNumber']}\nCity: @{variables('Result')?['City']}\nCounty: @{variables('Result')?['County']}\nState: @{variables('Result')?['State']}\nZipPostalCode: @{variables('Result')?['ZipPostalCode']}\nExtendedZipPostalCode: @{variables('Result')?['ExtendedZipPostalCode']}\nCountry: @{variables('Result')?['Country']}\nFullAddress: @{variables('Result')?['FullAddress']}\nLatitude: @{variables('Result')?['Latitude']}\nLongitude: @{variables('Result')?['Longitude']}\n\nWritten back to the address\n@{if(equals(variables('Result')?['ResultFound'],'Success'), concat('Street: ', coalesce(string(outputs('New_address')?['line1']),''), decodeUriComponent('%0A'), 'Unit: ', coalesce(string(outputs('New_address')?['line2']),''), decodeUriComponent('%0A'), 'City: ', coalesce(string(outputs('New_address')?['city']),''), decodeUriComponent('%0A'), 'County: ', coalesce(string(outputs('New_address')?['county']),''), decodeUriComponent('%0A'), 'State/Province: ', coalesce(string(outputs('New_address')?['state']),''), decodeUriComponent('%0A'), 'ZIP/Postal code: ', coalesce(string(outputs('New_address')?['zip']),''), decodeUriComponent('%0A'), 'Country: ', coalesce(string(outputs('New_address')?['country']),''), decodeUriComponent('%0A'), 'Latitude: ', string(outputs('New_address')?['latitude']), decodeUriComponent('%0A'), 'Longitude: ', string(outputs('New_address')?['longitude'])), 'Nothing was written back because Google Maps found no match.')}\n\nFull response\n@{string(variables('Result'))}",
+                  "item/objectid_account@odata.bind": "/accounts(@{triggerOutputs()?['body/accountid']})"
+                },
+                "authentication": "@parameters('$authentication')"
+              },
+              "runAfter": {
+                "Was_a_match_found": [
+                  "Succeeded"
+                ]
+              }
+            }
+          },
+          "runAfter": {
+            "Find_API_configuration": [
+              "Succeeded"
+            ]
+          }
+        },
+        "If_verification_failed": {
+          "type": "Scope",
+          "runAfter": {
+            "Verify": [
+              "Failed",
+              "TimedOut"
+            ]
+          },
+          "actions": {
+            "Clear_the_marker": {
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "accounts",
+                  "recordId": "@triggerOutputs()?['body/accountid']",
+                  "item/sxs_gm_verifiedaddress": ""
+                },
+                "authentication": "@parameters('$authentication')"
+              },
+              "runAfter": {}
+            },
+            "Add_a_failure_note": {
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "annotations",
+                  "item/subject": "Address verification failed (Google Maps)",
+                  "item/notetext": "The Google Maps verification flow could not check this address on @{utcNow()}.\nCheck that the key is saved on the sample app's Setup page and that your licence covers Google Maps.\n\nAddress sent\nStreet: @{triggerOutputs()?['body/address1_line1']}\nUnit: @{triggerOutputs()?['body/address1_line2']}\nCity: @{triggerOutputs()?['body/address1_city']}\nCounty: @{triggerOutputs()?['body/address1_county']}\nState/Province: @{triggerOutputs()?['body/address1_stateorprovince']}\nZIP/Postal code: @{triggerOutputs()?['body/address1_postalcode']}\nCountry: @{triggerOutputs()?['body/address1_country']}\n\nDetails\n@{take(string(result('Verify')), 90000)}",
+                  "item/objectid_account@odata.bind": "/accounts(@{triggerOutputs()?['body/accountid']})"
+                },
+                "authentication": "@parameters('$authentication')"
+              },
+              "runAfter": {
+                "Clear_the_marker": [
+                  "Succeeded",
+                  "Failed"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "outputs": {}
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

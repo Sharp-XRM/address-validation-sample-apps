@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AppModule>
+  <UniqueName>sxs_AzureMapsSample</UniqueName>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <WebResourceId>953b9fac-1e5e-e611-80d6-00155ded156f</WebResourceId>
+  <OptimizedFor></OptimizedFor>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <FormFactor>1</FormFactor>
+  <ClientType>4</ClientType>
+  <NavigationType>0</NavigationType>
+  <AppModuleComponents>
+    <AppModuleComponent type="1" schemaName="account" />
+    <AppModuleComponent type="1" schemaName="contact" />
+    <AppModuleComponent type="60" id="{6503b286-1e92-5823-b11a-18d2bcb6b850}" />
+    <AppModuleComponent type="60" id="{e69ccedb-d37b-5d68-bb56-29684c5b25cf}" />
+    <AppModuleComponent type="60" id="{22cbfbe5-a764-52b0-80c0-32254d92096b}" />
+    <AppModuleComponent type="60" id="{91ab2668-f189-517f-8d62-490f3385ffae}" />
+    <AppModuleComponent type="62" schemaName="sxs_AzureMapsSample" />
+  </AppModuleComponents>
+  <AppModuleRoleMaps>
+    <Role id="{627090ff-40a3-4053-8790-584edc5be201}" />
+    <Role id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+  </AppModuleRoleMaps>
+  <LocalizedNames>
+    <LocalizedName description="Azure Maps Address Sample" languagecode="1033" />
+  </LocalizedNames>
+  <Descriptions>
+    <Description description="Try the Azure Maps address autocomplete control on sample Account and Contact forms. Start with Setup to enter your API key." languagecode="1033" />
+  </Descriptions>
+  <appsettings>
+    <appsetting settingdefinitionid.uniquename="AppChannel">
+      <iscustomizable>1</iscustomizable>
+      <value>1</value>
+    </appsetting>
+  </appsettings>
+</AppModule>

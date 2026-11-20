@@ -1,0 +1,11 @@
+<dvtablesearch dvtablesearchid="35a0ee41-94ce-f111-a05c-7c1e52474138">
+  <appmoduleuniquename>sxs_PostGridSample</appmoduleuniquename>
+  <iscustomizable>1</iscustomizable>
+  <m365appmoduleid>
+    <uniquename>sxs_PostGridSample</uniquename>
+  </m365appmoduleid>
+  <name>M365_Primary_model_sxs_PostGridSample</name>
+  <searchtype>0</searchtype>
+  <statecode>1</statecode>
+  <statuscode>2</statuscode>
+</dvtablesearch>

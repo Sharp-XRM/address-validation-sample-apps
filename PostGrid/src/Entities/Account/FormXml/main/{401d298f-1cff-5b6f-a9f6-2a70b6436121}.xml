@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{401d298f-1cff-5b6f-a9f6-2a70b6436121}</formid>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <FormPresentation>0</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form showImage="true" headerdensity="HighWithControls">
+      <tabs>
+        <tab name="sample_tab" id="{114721ed-57c5-59b8-8e61-03e2286f59de}" IsUserDefined="1" showlabel="true" expanded="true" verticallayout="true">
+          <labels>
+            <label description="PostGrid address sample" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="50%">
+              <sections>
+                <section name="sample_details" showlabel="true" showbar="false" id="{9638734e-84e1-519b-a314-790db8664128}" IsUserDefined="1" layout="varwidth" columns="1" labelwidth="140" celllabelposition="Left">
+                  <labels>
+                    <label description="Details" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{2ea8824b-5d1d-549f-898c-51716cd97e93}" showlabel="true">
+                        <labels>
+                          <label description="Account Name" languagecode="1033" />
+                          <label description="Nom du compte" languagecode="1036" />
+                          <label description="Firmenname" languagecode="1031" />
+                          <label description="Nombre de cuenta" languagecode="3082" />
+                        </labels>
+                        <control id="name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="name" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{93927ae4-bd4f-57d4-83f7-1d7ac023816d}" showlabel="true">
+                        <labels>
+                          <label description="Phone" languagecode="1033" />
+                          <label description="Téléphone principal" languagecode="1036" />
+                          <label description="Telefon 1" languagecode="1031" />
+                          <label description="Número de centralita" languagecode="3082" />
+                        </labels>
+                        <control id="telephone1" classid="{8C10015A-B339-4982-9474-A95FE05631A5}" datafieldname="telephone1" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{4063555d-d413-55d8-b2a6-b8c251ea42ff}" showlabel="true">
+                        <labels>
+                          <label description="Email" languagecode="1033" />
+                          <label description="Courrier électronique" languagecode="1036" />
+                          <label description="E-Mail" languagecode="1031" />
+                          <label description="Correo electrónico" languagecode="3082" />
+                        </labels>
+                        <control id="emailaddress1" classid="{ADA2203E-B4CD-49be-9DDF-234642B43B52}" datafieldname="emailaddress1" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{fd7bf5cf-0fed-5cfb-a710-f984ba729dcc}" showlabel="true">
+                        <labels>
+                          <label description="Website" languagecode="1033" />
+                          <label description="Site Web" languagecode="1036" />
+                          <label description="Website" languagecode="1031" />
+                          <label description="Sitio web" languagecode="3082" />
+                        </labels>
+                        <control id="websiteurl" classid="{71716B6C-711E-476c-8AB8-5D11542BFB47}" datafieldname="websiteurl" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{936d844b-4382-5572-879a-9a62d8cb9775}" showlabel="true">
+                        <labels>
+                          <label description="Primary Contact" languagecode="1033" />
+                          <label description="Contact principal" languagecode="1036" />
+                          <label description="Primärer Kontakt" languagecode="1031" />
+                          <label description="Contacto principal" languagecode="3082" />
+                        </labels>
+                        <control id="primarycontactid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="primarycontactid" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="sample_search" showlabel="true" showbar="false" id="{393b3480-d777-50a0-9ff8-136ee48a33ae}" IsUserDefined="1" layout="varwidth" columns="1" labelwidth="140" celllabelposition="Left">
+                  <labels>
+                    <label description="Address search" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{5c2959b6-fda1-5f6c-a373-0663b09bd469}" showlabel="false">
+                        <labels>
+                          <label description="Address search" languagecode="1033" />
+                          <label description="Adresse 1 : Rue 1" languagecode="1036" />
+                          <label description="Adresse 1: Straße 1" languagecode="1031" />
+                          <label description="Dirección 1: calle 1" languagecode="3082" />
+                        </labels>
+                        <control id="address1_line1" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="address1_line1" disabled="false" uniqueid="{1df2365d-af7e-577d-a347-31121c1f9f34}" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="sample_notes" showlabel="true" showbar="false" id="{f90162cf-fd6d-534a-bbef-dff9f0ab6fbe}" IsUserDefined="1" layout="varwidth" columns="1" labelwidth="140" celllabelposition="Left">
+                  <labels>
+                    <label description="Notes (results of the PostGrid verification flow)" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{c1cfa115-88f8-5eb2-ad86-340ed21fa96b}" showlabel="true">
+                        <labels>
+                          <label description="Last verified address" languagecode="1033" />
+                        </labels>
+                        <control id="sxs_pg_verifiedaddress" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="sxs_pg_verifiedaddress" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{9f0428d2-be3e-59da-84bf-56b628cf9521}" showlabel="false" rowspan="20" auto="false" colspan="1">
+                        <labels>
+                          <label description="Notes" languagecode="1033" />
+                        </labels>
+                        <control id="notescontrol" classid="{06375649-c143-495e-a496-c962e5b4488e}" disabled="false" />
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="50%">
+              <sections>
+                <section name="sample_standard" showlabel="true" showbar="false" id="{92eb6079-b0fc-5541-97fd-a6d4c85c137e}" IsUserDefined="1" layout="varwidth" columns="1" labelwidth="140" celllabelposition="Left">
+                  <labels>
+                    <label description="Validated address (standard columns)" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{24d44283-49f1-5446-bd79-1ef73981a5dc}" showlabel="true">
+                        <labels>
+                          <label description="Street 1" languagecode="1033" />
+                          <label description="Adresse 1 : Rue 1" languagecode="1036" />
+                          <label description="Adresse 1: Straße 1" languagecode="1031" />
+                          <label description="Dirección 1: calle 1" languagecode="3082" />
+                        </labels>
+                        <control id="address1_line11" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_line1" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c50bb96a-fc03-5cf1-980f-bbc78ccd2c87}" showlabel="true">
+                        <labels>
+                          <label description="Street 2" languagecode="1033" />
+                          <label description="Adresse 1 : Rue 2" languagecode="1036" />
+                          <label description="Adresse 1: Straße 2" languagecode="1031" />
+                          <label description="Dirección 1: calle 2" languagecode="3082" />
+                        </labels>
+                        <control id="address1_line2" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_line2" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{5e156c15-bb64-5bd0-af33-60049f173d11}" showlabel="true">
+                        <labels>
+                          <label description="City" languagecode="1033" />
+                          <label description="Adresse 1 : Ville" languagecode="1036" />
+                          <label description="Adresse 1: Ort" languagecode="1031" />
+                          <label description="Dirección 1: ciudad" languagecode="3082" />
+                        </labels>
+                        <control id="address1_city" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_city" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{3f77f5a0-d24c-52e2-bff7-df2a4ccd8b37}" showlabel="true">
+                        <labels>
+                          <label description="State/Province" languagecode="1033" />
+                          <label description="Adresse 1 : Département/province" languagecode="1036" />
+                          <label description="Adresse 1: Bundesland/Kanton" languagecode="1031" />
+                          <label description="Dirección 1: estado o provincia" languagecode="3082" />
+                        </labels>
+                        <control id="address1_stateorprovince" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_stateorprovince" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d88f493a-c69e-5a27-9d24-89408a17cd4f}" showlabel="true">
+                        <labels>
+                          <label description="ZIP/Postal Code" languagecode="1033" />
+                          <label description="Adresse 1 : Code postal" languagecode="1036" />
+                          <label description="Adresse 1: Postleitzahl" languagecode="1031" />
+                          <label description="Dirección 1: código postal" languagecode="3082" />
+                        </labels>
+                        <control id="address1_postalcode" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_postalcode" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2f1d97b0-7ca2-5dc6-8431-53b02d4ae2b0}" showlabel="true">
+                        <labels>
+                          <label description="Country/Region" languagecode="1033" />
+                          <label description="Adresse 1 : Pays/région" languagecode="1036" />
+                          <label description="Adresse 1: Land/Region" languagecode="1031" />
+                          <label description="Dirección 1: país o región" languagecode="3082" />
+                        </labels>
+                        <control id="address1_country" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_country" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="sample_outputs" showlabel="true" showbar="false" id="{b627dc75-9ccc-577a-9420-bd144f05ff88}" IsUserDefined="1" layout="varwidth" columns="1" labelwidth="140" celllabelposition="Left">
+                  <labels>
+                    <label description="Extra PostGrid outputs (sample columns)" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{1f5ad28f-fbf2-5040-bff5-cd7ec853e96a}" showlabel="true">
+                        <labels>
+                          <label description="Full Address" languagecode="1033" />
+                        </labels>
+                        <control id="sxs_pg_fulladdress" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="sxs_pg_fulladdress" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{9d2779a6-f3c9-5357-8b3c-a4612364114f}" showlabel="true">
+                        <labels>
+                          <label description="Company" languagecode="1033" />
+                        </labels>
+                        <control id="sxs_pg_company" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="sxs_pg_company" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{9c06e1f8-ad0a-58d9-b857-855fd13e8a75}" columns="111" celllabelposition="Top" labelwidth="115">
+        <rows>
+          <row>
+            <cell id="{6f859570-c33d-5ae2-8a1f-b0d5cd1c1eea}" showlabel="true">
+              <labels>
+                <label description="Owner" languagecode="1033" />
+                <label description="Propriétaire" languagecode="1036" />
+                <label description="Besitzer" languagecode="1031" />
+                <label description="Propietario" languagecode="3082" />
+              </labels>
+              <control id="header_ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <controlDescriptions>
+        <controlDescription forControl="{1df2365d-af7e-577d-a347-31121c1f9f34}">
+          <customControl id="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}">
+            <parameters>
+              <datafieldname>address1_line1</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="sharpxrm_PostGridAutocomplete.Autocomplete">
+            <parameters>
+              <apiConfigName type="SingleLine.Text" static="true">SharpXrmSample_PostGrid</apiConfigName>
+              <street>address1_line1</street>
+              <unitNumber>address1_line2</unitNumber>
+              <city>address1_city</city>
+              <state>address1_stateorprovince</state>
+              <zip>address1_postalcode</zip>
+              <country>address1_country</country>
+              <fullAddress>sxs_pg_fulladdress</fullAddress>
+              <company>sxs_pg_company</company>
+              <defaultcountry type="SingleLine.Text" static="true">US</defaultcountry>
+              <displaycountries type="SingleLine.Text" static="true">US,CA</displaycountries>
+              <topcountries type="SingleLine.Text" static="true">US,CA</topcountries>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="sharpxrm_PostGridAutocomplete.Autocomplete">
+            <parameters>
+              <apiConfigName type="SingleLine.Text" static="true">SharpXrmSample_PostGrid</apiConfigName>
+              <street>address1_line1</street>
+              <unitNumber>address1_line2</unitNumber>
+              <city>address1_city</city>
+              <state>address1_stateorprovince</state>
+              <zip>address1_postalcode</zip>
+              <country>address1_country</country>
+              <fullAddress>sxs_pg_fulladdress</fullAddress>
+              <company>sxs_pg_company</company>
+              <defaultcountry type="SingleLine.Text" static="true">US</defaultcountry>
+              <displaycountries type="SingleLine.Text" static="true">US,CA</displaycountries>
+              <topcountries type="SingleLine.Text" static="true">US,CA</topcountries>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="sharpxrm_PostGridAutocomplete.Autocomplete">
+            <parameters>
+              <apiConfigName type="SingleLine.Text" static="true">SharpXrmSample_PostGrid</apiConfigName>
+              <street>address1_line1</street>
+              <unitNumber>address1_line2</unitNumber>
+              <city>address1_city</city>
+              <state>address1_stateorprovince</state>
+              <zip>address1_postalcode</zip>
+              <country>address1_country</country>
+              <fullAddress>sxs_pg_fulladdress</fullAddress>
+              <company>sxs_pg_company</company>
+              <defaultcountry type="SingleLine.Text" static="true">US</defaultcountry>
+              <displaycountries type="SingleLine.Text" static="true">US,CA</displaycountries>
+              <topcountries type="SingleLine.Text" static="true">US,CA</topcountries>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Account - PostGrid Sample" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Sample form for the PostGrid address autocomplete control. Shows the standard address columns and every extra output of the control." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

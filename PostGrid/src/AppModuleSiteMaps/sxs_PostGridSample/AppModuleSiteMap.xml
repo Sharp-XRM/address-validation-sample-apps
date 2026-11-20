@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AppModuleSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SiteMapUniqueName>sxs_PostGridSample</SiteMapUniqueName>
+  <EnableCollapsibleGroups>False</EnableCollapsibleGroups>
+  <ShowHome>True</ShowHome>
+  <ShowPinned>True</ShowPinned>
+  <ShowRecents>True</ShowRecents>
+  <SiteMap IntroducedVersion="7.0.0.0">
+    <Area Id="sxs_area" ResourceId="SitemapDesigner.NewArea" ShowGroups="true" IntroducedVersion="7.0.0.0">
+      <Titles>
+        <Title LCID="1033" Title="PostGrid sample" />
+      </Titles>
+      <Group Id="sxs_group_start" ResourceId="SitemapDesigner.NewGroup" IsProfile="false" IntroducedVersion="7.0.0.0">
+        <Titles>
+          <Title LCID="1033" Title="Get started" />
+        </Titles>
+        <SubArea Id="sxs_setup" Url="$webresource:sxs_/postgrid/setup.html" AvailableOffline="false" PassParams="false" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" IntroducedVersion="7.0.0.0">
+          <Titles>
+            <Title LCID="1033" Title="Setup" />
+          </Titles>
+        </SubArea>
+      </Group>
+      <Group Id="sxs_group_records" ResourceId="SitemapDesigner.NewGroup" IsProfile="false" IntroducedVersion="7.0.0.0">
+        <Titles>
+          <Title LCID="1033" Title="Sample records" />
+        </Titles>
+        <SubArea Id="sxs_accounts" Entity="account" AvailableOffline="true" PassParams="false" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" IntroducedVersion="7.0.0.0" />
+        <SubArea Id="sxs_contacts" Entity="contact" AvailableOffline="true" PassParams="false" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" IntroducedVersion="7.0.0.0" />
+      </Group>
+    </Area>
+  </SiteMap>
+  <LocalizedNames>
+    <LocalizedName description="PostGrid Address Sample" languagecode="1033" />
+  </LocalizedNames>
+</AppModuleSiteMap>

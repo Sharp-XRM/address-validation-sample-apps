@@ -1,0 +1,267 @@
+{
+  "$comment": "Catalogue that drives build_sample_apps.py. One entry per address autocomplete control. Outputs with 'std' map to a standard Account/Contact column; outputs with 'column' get a custom column named <prefix>_<code>_<column> on both tables.",
+  "publisher": {
+    "uniquename": "sharpxrmsamples",
+    "friendlyname": "SharpXRM Samples",
+    "prefix": "sxs",
+    "optionvalueprefix": 52229,
+    "description": "Sample apps for SharpXRM Address Validation for Dynamics 365.",
+    "website": "https://www.sharpxrm.com"
+  },
+  "version": "1.0.0.0",
+  "tables": {
+    "account": {
+      "displayName": "Account",
+      "details": ["name", "telephone1", "emailaddress1", "websiteurl", "primarycontactid"]
+    },
+    "contact": {
+      "displayName": "Contact",
+      "details": ["firstname", "lastname", "jobtitle", "parentcustomerid", "emailaddress1", "telephone1", "mobilephone"]
+    }
+  },
+  "providers": [
+    {
+      "key": "GoogleMaps",
+      "code": "gm",
+      "displayName": "Google Maps",
+      "serviceType": 229000003,
+      "licenceName": "Google Maps",
+      "control": "sharpxrm_GoogleMapsAddressComplete.Autocomplete",
+      "verification": { "api": "sharpxrm_VerifyWithGoogleAddressValidation", "config": "sample", "label": "Google Address Validation", "keyNote": "The flows use the same key. Enable the Address Validation API on it in the Google Cloud console, and do not restrict the key to websites only (the flows call Google from Dataverse, not from a browser)." },
+      "tryIt": "1600 Amphitheatre Parkway, Mountain View",
+      "credential": {
+        "label": "Google Maps API key",
+        "placeholder": "AIza...",
+        "getKeyUrl": "https://developers.google.com/maps/documentation/places/web-service/get-api-key",
+        "hints": [
+          "Create the key in the Google Cloud console and enable the Places API (New) and the Geocoding API for it.",
+          "Restrict the key to your Dynamics 365 address, for example https://yourorg.crm.dynamics.com/*."
+        ]
+      },
+      "inputs": {},
+      "outputs": [
+        { "prop": "street", "std": "address1_line1" },
+        { "prop": "unitNumber", "std": "address1_line2" },
+        { "prop": "city", "std": "address1_city" },
+        { "prop": "county", "std": "address1_county" },
+        { "prop": "state", "std": "address1_stateorprovince" },
+        { "prop": "zip", "std": "address1_postalcode" },
+        { "prop": "country", "std": "address1_country" },
+        { "prop": "latitude", "std": "address1_latitude" },
+        { "prop": "longitude", "std": "address1_longitude" },
+        { "prop": "fullAddress", "column": "fulladdress", "label": "Full Address", "type": "text", "max": 500 },
+        { "prop": "PostalTown", "column": "postaltown", "label": "Postal Town", "type": "text", "max": 200 },
+        { "prop": "AdminLevel3", "column": "adminlevel3", "label": "Admin Area Level 3", "type": "text", "max": 200 },
+        { "prop": "AdminLevel4", "column": "adminlevel4", "label": "Admin Area Level 4", "type": "text", "max": 200 },
+        { "prop": "AdminLevel5", "column": "adminlevel5", "label": "Admin Area Level 5", "type": "text", "max": 200 },
+        { "prop": "AdminLevel6", "column": "adminlevel6", "label": "Admin Area Level 6", "type": "text", "max": 200 },
+        { "prop": "placesBusinessName", "column": "businessname", "label": "Business Name", "type": "text", "max": 300 },
+        { "prop": "placeBusinessStatus", "column": "businessstatus", "label": "Business Status", "type": "text", "max": 100 },
+        { "prop": "placesPhoneNumber", "column": "businessphone", "label": "Business Phone", "type": "phone", "max": 100 },
+        { "prop": "placesBusinessURL", "column": "businesswebsite", "label": "Business Website", "type": "url", "max": 1000 },
+        { "prop": "placesGoogleMapsURL", "column": "googlemapsurl", "label": "Google Maps Link", "type": "url", "max": 1000 },
+        { "prop": "placesVicinity", "column": "vicinity", "label": "Vicinity", "type": "memo", "max": 2000 },
+        { "prop": "placesTypes", "column": "placetypes", "label": "Place Types", "type": "memo", "max": 2000 },
+        { "prop": "placesEditorialSummary", "column": "editorialsummary", "label": "Editorial Summary", "type": "memo", "max": 4000 }
+      ]
+    },
+    {
+      "key": "AzureMaps",
+      "code": "az",
+      "displayName": "Azure Maps",
+      "serviceType": 229000006,
+      "licenceName": "Azure Maps",
+      "control": "sharpxrm_AzureMapsAutocomplete.Autocomplete",
+      "verification": { "api": "sharpxrm_VerifyWithAzureMaps", "config": "sample", "label": "Azure Maps address search", "keyNote": "The flows use the same key." },
+      "tryIt": "500 Pine St, Seattle",
+      "credential": {
+        "label": "Azure Maps subscription key",
+        "placeholder": "Primary or secondary key of your Azure Maps account",
+        "getKeyUrl": "https://learn.microsoft.com/azure/azure-maps/how-to-manage-authentication",
+        "hints": [
+          "In the Azure portal, open your Azure Maps account, then Authentication, and copy the Primary Key."
+        ]
+      },
+      "inputs": { "defaultcountry": "US", "topcountries": "US,CA,GB" },
+      "outputs": [
+        { "prop": "street", "std": "address1_line1" },
+        { "prop": "unitNumber", "std": "address1_line2" },
+        { "prop": "city", "std": "address1_city" },
+        { "prop": "county", "std": "address1_county" },
+        { "prop": "state", "std": "address1_stateorprovince" },
+        { "prop": "zip", "std": "address1_postalcode" },
+        { "prop": "country", "std": "address1_country" },
+        { "prop": "latitude", "std": "address1_latitude" },
+        { "prop": "longitude", "std": "address1_longitude" },
+        { "prop": "fullAddress", "column": "fulladdress", "label": "Full Address", "type": "text", "max": 500 },
+        { "prop": "municipality", "column": "municipality", "label": "Municipality", "type": "text", "max": 200 }
+      ]
+    },
+    {
+      "key": "MelissaExpressEntry",
+      "code": "ee",
+      "displayName": "Melissa Express Entry",
+      "serviceType": 229000004,
+      "licenceName": "Melissa",
+      "control": "sharpxrm_ExpressEntry.Autocomplete",
+      "verification": { "api": "sharpxrm_GlobalPersonator", "mode": "melissaGlobal", "config": "sameKey", "serviceType": 229000000, "label": "Melissa Global Address Verification", "keyNote": "The flows use the same Melissa licence key with Global Address Verification. Setup also creates the Field Mappings the flows use." },
+      "requires": "a version of Address Validation for D365 whose Melissa Express Entry control is 0.2.0 or later (it adds the Country Subdivision Code output)",
+      "tryIt": "799 Greenwich St, New York (then open the building row with several addresses to pick a unit)",
+      "credential": {
+        "label": "Melissa licence key",
+        "placeholder": "Your Melissa licence key",
+        "getKeyUrl": "https://docs.melissa.com/cloud-api/global-express-entry/global-express-entry-quickstart.html",
+        "hints": [
+          "Use a Melissa licence key that has Global Express Entry credits."
+        ]
+      },
+      "inputs": { "defaultcountry": "US", "topcountries": "US,CA,MX,GB" },
+      "outputs": [
+        { "prop": "street", "std": "address1_line1" },
+        { "prop": "unitNumber", "std": "address1_line2" },
+        { "prop": "city", "std": "address1_city" },
+        { "prop": "county", "std": "address1_county" },
+        { "prop": "state", "std": "address1_stateorprovince" },
+        { "prop": "zip", "std": "address1_postalcode" },
+        { "prop": "country", "std": "address1_country" },
+        { "prop": "latitude", "std": "address1_latitude" },
+        { "prop": "longitude", "std": "address1_longitude" },
+        { "prop": "fullAddress", "column": "fulladdress", "label": "Full Address", "type": "text", "max": 500 },
+        { "prop": "building", "column": "building", "label": "Building", "type": "text", "max": 200 },
+        { "prop": "organization", "column": "organization", "label": "Organization", "type": "text", "max": 200 },
+        { "prop": "dependentLocality", "column": "dependentlocality", "label": "Dependent Locality", "type": "text", "max": 200 },
+        { "prop": "subdivisionCode", "column": "subdivisioncode", "label": "Country Subdivision Code (ISO 3166-2)", "type": "text", "max": 20 }
+      ]
+    },
+    {
+      "key": "CanadaPost",
+      "code": "cp",
+      "displayName": "Canada Post",
+      "serviceType": 229000005,
+      "licenceName": "Canada Post",
+      "control": "sharpxrm_ExpressEntryCanadaPost.Autocomplete",
+      "tryIt": "111 Wellington St, Ottawa",
+      "credential": {
+        "label": "Canada Post AddressComplete key",
+        "placeholder": "AA11-AA11-AA11-AA11",
+        "getKeyUrl": "https://www.canadapost-postescanada.ca/ac/",
+        "hints": [
+          "Copy the key of your AddressComplete account. It looks like AA11-AA11-AA11-AA11.",
+          "In the AddressComplete account, add your Dynamics 365 address to the key's allowed URLs."
+        ]
+      },
+      "inputs": {},
+      "outputs": [
+        { "prop": "street", "std": "address1_line1" },
+        { "prop": "unitNumber", "std": "address1_line2" },
+        { "prop": "city", "std": "address1_city" },
+        { "prop": "county", "std": "address1_county" },
+        { "prop": "state", "std": "address1_stateorprovince" },
+        { "prop": "zip", "std": "address1_postalcode" },
+        { "prop": "country", "std": "address1_country" },
+        { "prop": "latitude", "std": "address1_latitude" },
+        { "prop": "longitude", "std": "address1_longitude" },
+        { "prop": "fullAddress", "column": "fulladdress", "label": "Full Address", "type": "text", "max": 500 },
+        { "prop": "POBoxNumber", "column": "poboxnumber", "label": "PO Box Number", "type": "text", "max": 50 },
+        { "prop": "streetnumber", "column": "buildingnumber", "label": "Building Number", "type": "text", "max": 50 },
+        { "prop": "streetname", "column": "streetname", "label": "Street Name", "type": "text", "max": 200 },
+        { "prop": "addresstype", "column": "addresstype", "label": "Address Type", "type": "text", "max": 50 },
+        { "prop": "datalevel", "column": "datalevel", "label": "Data Level", "type": "text", "max": 50 }
+      ]
+    },
+    {
+      "key": "PostGrid",
+      "code": "pg",
+      "displayName": "PostGrid",
+      "serviceType": 229000009,
+      "licenceName": "PostGrid",
+      "control": "sharpxrm_PostGridAutocomplete.Autocomplete",
+      "verification": { "api": "sharpxrm_VerifyWithPostGrid", "internationalApi": "sharpxrm_VerifyWithPostGridInternational", "domesticCountries": ["us", "usa", "united states", "united states of america", "ca", "can", "canada"], "config": "separate", "label": "PostGrid Address Verification (US/Canada) and International Address Verification", "credential": { "label": "PostGrid secret API key", "placeholder": "live_sk_... or test_sk_...", "hints": ["The flows run in Dataverse, so they need the secret key (live_sk_ or test_sk_). Never put the secret key in the autocomplete field above: that key is sent to the browser.", "US and Canadian addresses use Address Verification; other countries use International Address Verification."] } },
+      "requires": "a version of Address Validation for D365 that includes the PostGrid provider",
+      "tryIt": "1 E 161st St, Bronx",
+      "credential": {
+        "label": "PostGrid public API key",
+        "placeholder": "live_pk_... or test_pk_...",
+        "getKeyUrl": "https://docs.postgrid.com/",
+        "hints": [
+          "Use the public key (live_pk_ or test_pk_) of your PostGrid Address Verification account. The secret key (live_sk_) is for server-side verification only.",
+          "In the PostGrid dashboard, add your Dynamics 365 address (https://yourorg.crm.dynamics.com) to the key's allowed origins."
+        ]
+      },
+      "inputs": { "defaultcountry": "US", "displaycountries": "US,CA", "topcountries": "US,CA" },
+      "outputs": [
+        { "prop": "street", "std": "address1_line1" },
+        { "prop": "unitNumber", "std": "address1_line2" },
+        { "prop": "city", "std": "address1_city" },
+        { "prop": "state", "std": "address1_stateorprovince" },
+        { "prop": "zip", "std": "address1_postalcode" },
+        { "prop": "country", "std": "address1_country" },
+        { "prop": "fullAddress", "column": "fulladdress", "label": "Full Address", "type": "text", "max": 500 },
+        { "prop": "company", "column": "company", "label": "Company", "type": "text", "max": 200 }
+      ]
+    },
+    {
+      "key": "Smarty",
+      "code": "sm",
+      "displayName": "Smarty",
+      "serviceType": 229000008,
+      "licenceName": "Smarty",
+      "control": "sharpxrm_SmartyAutocomplete.Autocomplete",
+      "verification": { "api": "sharpxrm_VerifyWithSmarty", "internationalApi": "sharpxrm_VerifyWithSmartyInternational", "domesticCountries": ["us", "usa", "united states", "united states of america"], "config": "separate", "label": "Smarty US Street Address and International Street Address", "credential": { "label": "Smarty secret key", "placeholder": "Auth ID:Auth Token", "hints": ["The flows run in Dataverse, so they need a secret key: the Auth ID and Auth Token joined with a colon (AuthID:AuthToken).", "US addresses use US Street Address; other countries use International Street Address (separate Smarty subscriptions)."] } },
+      "requires": "a version of Address Validation for D365 that includes the Smarty provider",
+      "tryIt": "1600 Amphitheatre Pkwy, Mountain View",
+      "credential": {
+        "label": "Smarty embedded key",
+        "placeholder": "Your Smarty embedded (website) key",
+        "getKeyUrl": "https://www.smarty.com/docs/cloud/authentication",
+        "hints": [
+          "Use an embedded key (website key). Secret keys (Auth ID:Auth Token) are for server-side verification only.",
+          "In your Smarty account, add your Dynamics 365 host (yourorg.crm.dynamics.com) to the embedded key's authorised hosts.",
+          "US suggestions need a US Autocomplete Pro subscription; other countries need International Address Autocomplete."
+        ]
+      },
+      "inputs": { "defaultcountry": "US", "topcountries": "US,CA,GB" },
+      "outputs": [
+        { "prop": "street", "std": "address1_line1" },
+        { "prop": "unitNumber", "std": "address1_line2" },
+        { "prop": "city", "std": "address1_city" },
+        { "prop": "state", "std": "address1_stateorprovince" },
+        { "prop": "zip", "std": "address1_postalcode" },
+        { "prop": "country", "std": "address1_country" },
+        { "prop": "fullAddress", "column": "fulladdress", "label": "Full Address", "type": "text", "max": 500 },
+        { "prop": "company", "column": "company", "label": "Company", "type": "text", "max": 200 }
+      ]
+    },
+    {
+      "key": "Byteplant",
+      "code": "bp",
+      "displayName": "Byteplant",
+      "serviceType": 229000010,
+      "licenceName": "Byteplant",
+      "control": "sharpxrm_ByteplantAutocomplete.Autocomplete",
+      "verification": { "api": "sharpxrm_VerifyWithByteplant", "config": "sample", "label": "Byteplant Address Validator", "keyNote": "The flows use the same key." },
+      "requires": "a version of Address Validation for D365 that includes the Byteplant provider",
+      "tryIt": "1600 Amphitheatre Parkway, Mountain View",
+      "credential": {
+        "label": "Byteplant Address Validator API key",
+        "validate": false,
+        "placeholder": "av-...",
+        "getKeyUrl": "https://www.address-validator.net/",
+        "hints": [
+          "Use the API key of your Byteplant Address Validator account. The key never reaches the browser: searches are relayed through Dataverse."
+        ]
+      },
+      "inputs": { "defaultcountry": "US", "topcountries": "US,CA,GB,AU" },
+      "outputs": [
+        { "prop": "street", "std": "address1_line1" },
+        { "prop": "unitNumber", "std": "address1_line2" },
+        { "prop": "city", "std": "address1_city" },
+        { "prop": "state", "std": "address1_stateorprovince" },
+        { "prop": "zip", "std": "address1_postalcode" },
+        { "prop": "country", "std": "address1_country" },
+        { "prop": "fullAddress", "column": "fulladdress", "label": "Full Address", "type": "text", "max": 500 },
+        { "prop": "company", "column": "company", "label": "Company", "type": "text", "max": 200 }
+      ]
+    }
+  ]
+}

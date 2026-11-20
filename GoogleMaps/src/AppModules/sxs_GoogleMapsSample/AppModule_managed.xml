@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AppModule>
+  <UniqueName>sxs_GoogleMapsSample</UniqueName>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <WebResourceId>953b9fac-1e5e-e611-80d6-00155ded156f</WebResourceId>
+  <OptimizedFor></OptimizedFor>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <FormFactor>1</FormFactor>
+  <ClientType>4</ClientType>
+  <NavigationType>0</NavigationType>
+  <AppModuleComponents>
+    <AppModuleComponent type="1" schemaName="account" />
+    <AppModuleComponent type="1" schemaName="contact" />
+    <AppModuleComponent type="60" id="{8a7fdf7b-a4ce-549f-8d67-152b51fa450f}" />
+    <AppModuleComponent type="60" id="{7a197627-54b7-541e-8ed4-1c65e47c4e83}" />
+    <AppModuleComponent type="60" id="{dd8fc730-0693-5312-bac2-8389b3545bb8}" />
+    <AppModuleComponent type="60" id="{216442ee-881c-5ee8-950a-8e3c249e9137}" />
+    <AppModuleComponent type="62" schemaName="sxs_GoogleMapsSample" />
+  </AppModuleComponents>
+  <AppModuleRoleMaps>
+    <Role id="{627090ff-40a3-4053-8790-584edc5be201}" />
+    <Role id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+  </AppModuleRoleMaps>
+  <LocalizedNames>
+    <LocalizedName description="Google Maps Address Sample" languagecode="1033" />
+  </LocalizedNames>
+  <Descriptions>
+    <Description description="Try the Google Maps address autocomplete control on sample Account and Contact forms. Start with Setup to enter your API key." languagecode="1033" />
+  </Descriptions>
+  <appsettings>
+    <appsetting settingdefinitionid.uniquename="AppChannel">
+      <iscustomizable>1</iscustomizable>
+      <value>1</value>
+    </appsetting>
+  </appsettings>
+</AppModule>

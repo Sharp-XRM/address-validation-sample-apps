@@ -1,0 +1,296 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "sxs_melissaexpressentry_dataverse"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_an_address_is_added_or_changed": {
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "contact",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "address1_line1,address1_line2,address1_city,address1_county,address1_stateorprovince,address1_postalcode,address1_country"
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "conditions": [
+            {
+              "expression": "@and(not(empty(coalesce(triggerOutputs()?['body/sxs_ee_fulladdress'],''))), not(empty(coalesce(triggerOutputs()?['body/address1_line1'],''))), not(equals(coalesce(triggerOutputs()?['body/sxs_ee_verifiedaddress'],''),'PENDING')), not(equals(coalesce(triggerOutputs()?['body/sxs_ee_verifiedaddress'],''),concat(coalesce(triggerOutputs()?['body/address1_line1'],''),'|',coalesce(triggerOutputs()?['body/address1_line2'],''),'|',coalesce(triggerOutputs()?['body/address1_city'],''),'|',coalesce(triggerOutputs()?['body/address1_county'],''),'|',coalesce(triggerOutputs()?['body/address1_stateorprovince'],''),'|',coalesce(triggerOutputs()?['body/address1_postalcode'],''),'|',coalesce(triggerOutputs()?['body/address1_country'],'')))))"
+            }
+          ]
+        }
+      },
+      "actions": {
+        "Initialize_result": {
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Result",
+                "type": "object",
+                "value": {}
+              }
+            ]
+          },
+          "runAfter": {}
+        },
+        "Mark_as_being_verified": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "contacts",
+              "recordId": "@triggerOutputs()?['body/contactid']",
+              "item/sxs_ee_verifiedaddress": "PENDING"
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "runAfter": {
+            "Initialize_result": [
+              "Succeeded"
+            ]
+          }
+        },
+        "Find_API_configuration": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "sharpxrm_sharpxrmconfigurations",
+              "$select": "sharpxrm_sharpxrmconfigurationid",
+              "$filter": "sharpxrm_name eq 'SharpXrmSample_MelissaExpressEntry_Verify'",
+              "$top": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "runAfter": {
+            "Mark_as_being_verified": [
+              "Succeeded"
+            ]
+          }
+        },
+        "Find_field_mapping": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "sharpxrm_addressvalidationfieldsconfigs",
+              "$select": "sharpxrm_addressvalidationfieldsconfigid",
+              "$filter": "sharpxrm_configurationname eq 'SharpXrmSample_MelissaExpressEntry_contact'",
+              "$top": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "runAfter": {
+            "Find_API_configuration": [
+              "Succeeded"
+            ]
+          }
+        },
+        "Verify": {
+          "type": "Scope",
+          "actions": {
+            "Verify_the_address": {
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "PerformUnboundAction",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "actionName": "sharpxrm_GlobalPersonator",
+                  "item/Target": {
+                    "@@odata.type": "Microsoft.Dynamics.CRM.contact",
+                    "contactid": "@triggerOutputs()?['body/contactid']"
+                  },
+                  "item/FieldMappingId": {
+                    "@@odata.type": "Microsoft.Dynamics.CRM.sharpxrm_addressvalidationfieldsconfig",
+                    "sharpxrm_addressvalidationfieldsconfigid": "@first(outputs('Find_field_mapping')?['body/value'])?['sharpxrm_addressvalidationfieldsconfigid']"
+                  }
+                },
+                "authentication": "@parameters('$authentication')"
+              },
+              "runAfter": {}
+            },
+            "Keep_the_result": {
+              "type": "SetVariable",
+              "inputs": {
+                "name": "Result",
+                "value": "@body('Verify_the_address')"
+              },
+              "runAfter": {
+                "Verify_the_address": [
+                  "Succeeded"
+                ]
+              }
+            },
+            "Read_the_updated_address": {
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "contacts",
+                  "recordId": "@triggerOutputs()?['body/contactid']",
+                  "$select": "address1_line1,address1_line2,address1_city,address1_county,address1_stateorprovince,address1_postalcode,address1_country,address1_latitude,address1_longitude"
+                },
+                "authentication": "@parameters('$authentication')"
+              },
+              "runAfter": {
+                "Keep_the_result": [
+                  "Succeeded"
+                ]
+              }
+            },
+            "Remember_the_checked_address": {
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "contacts",
+                  "recordId": "@triggerOutputs()?['body/contactid']",
+                  "item/sxs_ee_verifiedaddress": "@concat(coalesce(outputs('Read_the_updated_address')?['body/address1_line1'],''),'|',coalesce(outputs('Read_the_updated_address')?['body/address1_line2'],''),'|',coalesce(outputs('Read_the_updated_address')?['body/address1_city'],''),'|',coalesce(outputs('Read_the_updated_address')?['body/address1_county'],''),'|',coalesce(outputs('Read_the_updated_address')?['body/address1_stateorprovince'],''),'|',coalesce(outputs('Read_the_updated_address')?['body/address1_postalcode'],''),'|',coalesce(outputs('Read_the_updated_address')?['body/address1_country'],''))"
+                },
+                "authentication": "@parameters('$authentication')"
+              },
+              "runAfter": {
+                "Read_the_updated_address": [
+                  "Succeeded"
+                ]
+              }
+            },
+            "Add_a_note_with_the_full_result": {
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "annotations",
+                  "item/subject": "Address verification (Melissa Express Entry): @{variables('Result')?['ValidationStatus']}",
+                  "item/notetext": "Melissa Express Entry checked this address on @{utcNow()} using Melissa Global Address Verification (sharpxrm_GlobalPersonator). The action writes the verified address back through the Field Mapping SharpXrmSample_MelissaExpressEntry_contact.\n\nAddress sent\nStreet: @{triggerOutputs()?['body/address1_line1']}\nUnit: @{triggerOutputs()?['body/address1_line2']}\nCity: @{triggerOutputs()?['body/address1_city']}\nCounty: @{triggerOutputs()?['body/address1_county']}\nState/Province: @{triggerOutputs()?['body/address1_stateorprovince']}\nZIP/Postal code: @{triggerOutputs()?['body/address1_postalcode']}\nCountry: @{triggerOutputs()?['body/address1_country']}\n\nResult returned by Melissa\nValidationStatus: @{variables('Result')?['ValidationStatus']}\nOperationResultMessage: @{variables('Result')?['OperationResultMessage']}\nTransmissionResults: @{variables('Result')?['TransmissionResults']}\nTransmissionReference: @{variables('Result')?['TransmissionReference']}\nValidationResults: @{variables('Result')?['ValidationResults']}\n\nAddress after verification\nStreet: @{outputs('Read_the_updated_address')?['body/address1_line1']}\nUnit: @{outputs('Read_the_updated_address')?['body/address1_line2']}\nCity: @{outputs('Read_the_updated_address')?['body/address1_city']}\nCounty: @{outputs('Read_the_updated_address')?['body/address1_county']}\nState/Province: @{outputs('Read_the_updated_address')?['body/address1_stateorprovince']}\nZIP/Postal code: @{outputs('Read_the_updated_address')?['body/address1_postalcode']}\nCountry: @{outputs('Read_the_updated_address')?['body/address1_country']}\nLatitude: @{outputs('Read_the_updated_address')?['body/address1_latitude']}\nLongitude: @{outputs('Read_the_updated_address')?['body/address1_longitude']}\n\nFull response\n@{string(variables('Result'))}",
+                  "item/objectid_contact@odata.bind": "/contacts(@{triggerOutputs()?['body/contactid']})"
+                },
+                "authentication": "@parameters('$authentication')"
+              },
+              "runAfter": {
+                "Remember_the_checked_address": [
+                  "Succeeded"
+                ]
+              }
+            }
+          },
+          "runAfter": {
+            "Find_field_mapping": [
+              "Succeeded"
+            ]
+          }
+        },
+        "If_verification_failed": {
+          "type": "Scope",
+          "runAfter": {
+            "Verify": [
+              "Failed",
+              "TimedOut"
+            ]
+          },
+          "actions": {
+            "Clear_the_marker": {
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "contacts",
+                  "recordId": "@triggerOutputs()?['body/contactid']",
+                  "item/sxs_ee_verifiedaddress": ""
+                },
+                "authentication": "@parameters('$authentication')"
+              },
+              "runAfter": {}
+            },
+            "Add_a_failure_note": {
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "annotations",
+                  "item/subject": "Address verification failed (Melissa Express Entry)",
+                  "item/notetext": "The Melissa Express Entry verification flow could not check this address on @{utcNow()}.\nCheck that the key is saved on the sample app's Setup page and that your licence covers Melissa.\n\nAddress sent\nStreet: @{triggerOutputs()?['body/address1_line1']}\nUnit: @{triggerOutputs()?['body/address1_line2']}\nCity: @{triggerOutputs()?['body/address1_city']}\nCounty: @{triggerOutputs()?['body/address1_county']}\nState/Province: @{triggerOutputs()?['body/address1_stateorprovince']}\nZIP/Postal code: @{triggerOutputs()?['body/address1_postalcode']}\nCountry: @{triggerOutputs()?['body/address1_country']}\n\nDetails\n@{take(string(result('Verify')), 90000)}",
+                  "item/objectid_contact@odata.bind": "/contacts(@{triggerOutputs()?['body/contactid']})"
+                },
+                "authentication": "@parameters('$authentication')"
+              },
+              "runAfter": {
+                "Clear_the_marker": [
+                  "Succeeded",
+                  "Failed"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "outputs": {}
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

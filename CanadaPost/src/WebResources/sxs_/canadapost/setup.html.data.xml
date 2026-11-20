@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebResource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <WebResourceId>{94be7628-bb23-5a56-99cd-664b6fbc2f8a}</WebResourceId>
+  <Name>sxs_/canadapost/setup.html</Name>
+  <DisplayName>Canada Post sample - Setup</DisplayName>
+  <Description>Enter the Canada Post API key for the sample app.</Description>
+  <WebResourceType>1</WebResourceType>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <IsEnabledForMobileClient>0</IsEnabledForMobileClient>
+  <IsAvailableForMobileOffline>0</IsAvailableForMobileOffline>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <IsHidden>0</IsHidden>
+  <FileName>/WebResources/sxs_canadapostsetuphtml94BE7628-BB23-5A56-99CD-664B6FBC2F8A</FileName>
+</WebResource>

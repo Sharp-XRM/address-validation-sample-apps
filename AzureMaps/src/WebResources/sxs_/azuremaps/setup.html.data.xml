@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebResource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <WebResourceId>{ea68afb8-c9b5-52d9-baf7-810ad6655ab0}</WebResourceId>
+  <Name>sxs_/azuremaps/setup.html</Name>
+  <DisplayName>Azure Maps sample - Setup</DisplayName>
+  <Description>Enter the Azure Maps API key for the sample app.</Description>
+  <WebResourceType>1</WebResourceType>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <IsEnabledForMobileClient>0</IsEnabledForMobileClient>
+  <IsAvailableForMobileOffline>0</IsAvailableForMobileOffline>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <IsHidden>0</IsHidden>
+  <FileName>/WebResources/sxs_azuremapssetuphtmlEA68AFB8-C9B5-52D9-BAF7-810AD6655AB0</FileName>
+</WebResource>

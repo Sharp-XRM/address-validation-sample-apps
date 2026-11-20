@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Workflow WorkflowId="{aa7da0d8-8c6f-538c-8486-337917eb1c14}" Name="Verify account address with PostGrid (sample)" Description="Runs when the address of a account changes: checks it with PostGrid Address Verification (US/Canada) and International Address Verification, writes the verified address back to the standard address columns, and adds a note with everything PostGrid returned. Part of the PostGrid sample app." xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <JsonFileName>/Workflows/VerifyaccountaddresswithPostGridsample-AA7DA0D8-8C6F-538C-8486-337917EB1C14.json</JsonFileName>
+  <Type>1</Type>
+  <Subprocess>0</Subprocess>
+  <Category>5</Category>
+  <Mode>0</Mode>
+  <Scope>4</Scope>
+  <OnDemand>0</OnDemand>
+  <TriggerOnCreate>0</TriggerOnCreate>
+  <TriggerOnDelete>0</TriggerOnDelete>
+  <AsyncAutodelete>0</AsyncAutodelete>
+  <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+  <StateCode>1</StateCode>
+  <StatusCode>2</StatusCode>
+  <RunAs>1</RunAs>
+  <IsTransacted>1</IsTransacted>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <IsCustomizable>1</IsCustomizable>
+  <BusinessProcessType>0</BusinessProcessType>
+  <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+  <ModernFlowType>0</ModernFlowType>
+  <PrimaryEntity>none</PrimaryEntity>
+  <LocalizedNames>
+    <LocalizedName languagecode="1033" description="Verify account address with PostGrid (sample)" />
+  </LocalizedNames>
+  <Descriptions>
+    <Description languagecode="1033" description="Runs when the address of a account changes: checks it with PostGrid Address Verification (US/Canada) and International Address Verification, writes the verified address back to the standard address columns, and adds a note with everything PostGrid returned. Part of the PostGrid sample app." />
+  </Descriptions>
+</Workflow>

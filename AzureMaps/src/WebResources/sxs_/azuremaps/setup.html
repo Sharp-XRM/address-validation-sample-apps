@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Address Validation sample - Setup</title>
+<style>
+  :root { --brand: #0f6cbd; --ok: #107c10; --warn: #8a5300; --err: #b10e1c; --line: #e1e1e1; --muted: #616161; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif; font-size: 14px; color: #242424; background: #f5f5f5; }
+  main { max-width: 760px; margin: 0 auto; padding: 24px 16px 48px; }
+  h1 { font-size: 24px; font-weight: 600; margin: 0 0 4px; }
+  h2 { font-size: 16px; font-weight: 600; margin: 0 0 12px; }
+  p { line-height: 1.5; margin: 0 0 10px; }
+  .subtitle { color: var(--muted); margin-bottom: 20px; }
+  .card { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 20px; margin-bottom: 16px; box-shadow: 0 1px 2px rgba(0,0,0,.04); }
+  .status-row { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-top: 1px solid #f0f0f0; }
+  .status-row:first-of-type { border-top: 0; }
+  .dot { flex: 0 0 10px; height: 10px; margin-top: 5px; border-radius: 50%; background: #c8c8c8; }
+  .dot.ok { background: var(--ok); } .dot.warn { background: #f7a400; } .dot.err { background: var(--err); }
+  .status-label { flex: 0 0 170px; font-weight: 600; }
+  .status-text { flex: 1; color: #424242; word-break: break-word; }
+  label { display: block; font-weight: 600; margin: 12px 0 4px; }
+  input, select { width: 100%; padding: 8px 10px; font: inherit; border: 1px solid #c7c7c7; border-radius: 4px; background: #fff; }
+  input:focus, select:focus { outline: 2px solid var(--brand); outline-offset: 0; border-color: var(--brand); }
+  .key-wrap { display: flex; gap: 8px; }
+  .key-wrap input { flex: 1; }
+  button { font: inherit; font-weight: 600; padding: 8px 16px; border-radius: 4px; border: 1px solid #c7c7c7; background: #fff; cursor: pointer; }
+  button.primary { background: var(--brand); border-color: var(--brand); color: #fff; }
+  button:disabled { opacity: .5; cursor: default; }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  ul.hints { margin: 8px 0 0; padding-left: 20px; color: #424242; }
+  ul.hints li { margin-bottom: 4px; line-height: 1.45; }
+  .banner { border-radius: 4px; padding: 10px 12px; margin-top: 14px; line-height: 1.45; }
+  .banner.info { background: #ebf3fc; border: 1px solid #b4d6fa; }
+  .banner.ok { background: #f1faf1; border: 1px solid #9fd89f; }
+  .banner.warn { background: #fff9f5; border: 1px solid #fdcfb4; }
+  .banner.err { background: #fdf3f4; border: 1px solid #eeacb2; }
+  .muted { color: var(--muted); font-size: 12px; }
+  code { background: #f0f0f0; padding: 1px 4px; border-radius: 3px; font-size: 12px; }
+  a { color: var(--brand); }
+</style>
+</head>
+<body>
+<main>
+  <h1 id="title">Set up the sample</h1>
+  <p class="subtitle" id="subtitle"></p>
+
+  <section class="card" aria-labelledby="statusHeading">
+    <h2 id="statusHeading">Status</h2>
+    <div class="status-row"><span class="dot" id="dotProduct"></span><span class="status-label">Address Validation</span><span class="status-text" id="txtProduct">Checking&hellip;</span></div>
+    <div class="status-row"><span class="dot" id="dotLicence"></span><span class="status-label">Licence</span><span class="status-text" id="txtLicence">Checking&hellip;</span></div>
+    <div class="status-row"><span class="dot" id="dotConfig"></span><span class="status-label">API configuration</span><span class="status-text" id="txtConfig">Checking&hellip;</span></div>
+    <div class="status-row" id="rowVerify" style="display:none"><span class="dot" id="dotVerify"></span><span class="status-label">Verification key</span><span class="status-text" id="txtVerify">Checking&hellip;</span></div>
+    <div class="status-row" id="rowFlows" style="display:none"><span class="dot" id="dotFlows"></span><span class="status-label">Verification flows</span><span class="status-text" id="txtFlows">Checking&hellip;</span></div>
+  </section>
+
+  <section class="card" aria-labelledby="keyHeading">
+    <h2 id="keyHeading">1. Enter your API key</h2>
+    <div id="keyFields"></div>
+    <ul class="hints" id="hints"></ul>
+    <div class="actions">
+      <button type="button" class="primary" id="btnSave" disabled>Save and validate</button>
+      <a id="lnkGetKey" target="_blank" rel="noopener" style="align-self:center">Where do I get a key?</a>
+    </div>
+    <div id="messages" aria-live="polite"></div>
+  </section>
+
+  <section class="card" id="verifyCard" style="display:none" aria-labelledby="verifyHeading">
+    <h2 id="verifyHeading">2. Background verification</h2>
+    <p id="verifyIntro"></p>
+    <div id="verifyFields"></div>
+    <ul class="hints" id="verifyHints"></ul>
+    <div class="actions" id="verifyActions" style="display:none">
+      <button type="button" class="primary" id="btnSaveVerify" disabled>Save and validate</button>
+    </div>
+    <div id="verifyMessages" aria-live="polite"></div>
+  </section>
+
+  <section class="card" aria-labelledby="tryHeading">
+    <h2 id="tryHeading">2. Try it</h2>
+    <p>Open a sample record, start typing a street address in the <strong>Address search</strong> box, and pick a suggestion. The standard address columns and the provider's extra outputs fill in so you can see everything the control returns.</p>
+    <p id="tryIt"></p>
+    <div class="actions">
+      <button type="button" id="btnNewAccount">New sample account</button>
+      <button type="button" id="btnNewContact">New sample contact</button>
+      <button type="button" id="btnQuickAccount">Quick create account</button>
+      <button type="button" id="btnQuickContact">Quick create contact</button>
+      <button type="button" id="btnAccounts">Open accounts</button>
+      <button type="button" id="btnContacts">Open contacts</button>
+    </div>
+    <p class="muted" style="margin-top:14px">The controls keep their configuration in your browser for speed. After you change the key, refresh the browser tab (F5) before you try the control again.</p>
+  </section>
+
+  <p class="muted" id="footer"></p>
+</main>
+
+<script>
+/* The build tool replaces the next value with this sample's settings. */
+var SAMPLE = {
+  "providerName": "Azure Maps",
+  "serviceType": 229000006,
+  "licenceName": "Azure Maps",
+  "configName": "SharpXrmSample_AzureMaps",
+  "solutionName": "SharpXrmSampleAzureMaps",
+  "credential": {
+    "label": "Azure Maps subscription key",
+    "placeholder": "Primary or secondary key of your Azure Maps account",
+    "getKeyUrl": "https://learn.microsoft.com/azure/azure-maps/how-to-manage-authentication",
+    "hints": [
+      "In the Azure portal, open your Azure Maps account, then Authentication, and copy the Primary Key."
+    ]
+  },
+  "tryIt": "500 Pine St, Seattle",
+  "forms": {
+    "account": "e69ccedb-d37b-5d68-bb56-29684c5b25cf",
+    "contact": "22cbfbe5-a764-52b0-80c0-32254d92096b"
+  },
+  "quickCreateForms": {
+    "account": "91ab2668-f189-517f-8d62-490f3385ffae",
+    "contact": "6503b286-1e92-5823-b11a-18d2bcb6b850"
+  },
+  "verification": {
+    "label": "Azure Maps address search",
+    "config": "sample",
+    "mode": "customApi",
+    "configName": "SharpXrmSample_AzureMaps",
+    "serviceType": 229000006,
+    "credential": null,
+    "keyNote": "The flows use the same key.",
+    "flows": [
+      {
+        "table": "account",
+        "id": "872369fa-3da1-5e75-8a0b-c14f5ccfc0e1",
+        "name": "Verify account address with Azure Maps (sample)"
+      },
+      {
+        "table": "contact",
+        "id": "73d54407-f358-5ba7-882f-f0821e36dd3e",
+        "name": "Verify contact address with Azure Maps (sample)"
+      }
+    ],
+    "fieldMappings": {
+      "account": "SharpXrmSample_AzureMaps_account",
+      "contact": "SharpXrmSample_AzureMaps_contact"
+    },
+    "fingerprintColumn": "sxs_az_verifiedaddress",
+    "melissaFullAddressColumn": "sxs_az_fulladdress"
+  }
+};
+
+(function () {
+  "use strict";
+
+  var ENTITY_SET = "sharpxrm_sharpxrmconfigurations";
+  var SMARTY = 229000008, POSTGRID = 229000009;
+  var apiBase = window.location.origin + "/api/data/v9.2/";
+  var state = { productInstalled: false, config: null, busy: false };
+
+  function $(id) { return document.getElementById(id); }
+
+  function xrm() {
+    try { if (window.parent && window.parent.Xrm && window.parent.Xrm.Navigation) { return window.parent.Xrm; } } catch (e) { /* cross-origin parent */ }
+    return window.Xrm && window.Xrm.Navigation ? window.Xrm : null;
+  }
+
+  function webApi(method, path, body, extraHeaders) {
+    var headers = { "Accept": "application/json", "OData-MaxVersion": "4.0", "OData-Version": "4.0" };
+    if (body !== undefined) { headers["Content-Type"] = "application/json; charset=utf-8"; }
+    Object.keys(extraHeaders || {}).forEach(function (k) { headers[k] = extraHeaders[k]; });
+    return fetch(apiBase + path, {
+      method: method, headers: headers, credentials: "same-origin",
+      body: body === undefined ? undefined : JSON.stringify(body)
+    }).then(function (response) {
+      return response.text().then(function (text) {
+        var data = null;
+        try { data = text ? JSON.parse(text) : null; } catch (e) { data = null; }
+        if (!response.ok) {
+          var err = new Error((data && data.error && data.error.message) || ("HTTP " + response.status));
+          err.status = response.status;
+          throw err;
+        }
+        return { data: data, response: response };
+      });
+    });
+  }
+
+  function setStatus(name, level, text) {
+    $("dot" + name).className = "dot" + (level ? " " + level : "");
+    $("txt" + name).textContent = text;
+  }
+
+  function banner(level, text) {
+    var div = document.createElement("div");
+    div.className = "banner " + level;
+    div.textContent = text;
+    $("messages").appendChild(div);
+    return div;
+  }
+
+  function clearBanners() { $("messages").innerHTML = ""; }
+
+  function escapeOData(value) { return String(value).replace(/'/g, "''"); }
+
+  function mask(key) {
+    key = key || "";
+    if (key.length <= 4) { return "\u2022\u2022\u2022\u2022"; }
+    return "\u2022\u2022\u2022\u2022" + key.slice(-4);
+  }
+
+  /* ---------------- rendering ---------------- */
+
+  function renderStatic() {
+    document.title = SAMPLE.providerName + " sample - Setup";
+    $("title").textContent = "Set up the " + SAMPLE.providerName + " sample";
+    $("subtitle").textContent = "Connect " + SAMPLE.providerName + " to the address search on the sample Account and Contact forms. "
+      + "Your key is stored in the \u201c" + SAMPLE.configName + "\u201d API Configuration record of Address Validation for D365.";
+    $("lnkGetKey").href = SAMPLE.credential.getKeyUrl;
+    $("lnkGetKey").textContent = "Where do I get a " + SAMPLE.providerName + " key?";
+    $("footer").textContent = "Sample solution " + SAMPLE.solutionName + " \u00b7 SharpXRM Address Validation for Dynamics 365";
+    if (SAMPLE.tryIt) {
+      $("tryIt").textContent = "Try typing: " + SAMPLE.tryIt;
+    }
+
+    var hints = $("hints");
+    (SAMPLE.credential.hints || []).forEach(function (h) {
+      var li = document.createElement("li");
+      li.textContent = h;
+      hints.appendChild(li);
+    });
+
+    var fields = $("keyFields");
+    fields.innerHTML =
+      '<label for="inKey"></label><div class="key-wrap"><input id="inKey" type="password" autocomplete="new-password" spellcheck="false" /><button type="button" id="btnShow">Show</button></div>';
+    document.querySelector('label[for="inKey"]').textContent = SAMPLE.credential.label;
+    $("inKey").placeholder = SAMPLE.credential.placeholder || "";
+    $("btnShow").addEventListener("click", function () {
+      var input = $("inKey");
+      var show = input.type === "password";
+      input.type = show ? "text" : "password";
+      this.textContent = show ? "Hide" : "Show";
+    });
+  }
+
+  function renderConfig() {
+    var c = state.config;
+    if (!state.productInstalled) { setStatus("Config", "err", "Not available."); return; }
+    if (!c) {
+      setStatus("Config", "warn", "Not set up yet. Enter your key below to create it.");
+      return;
+    }
+    var key = c.sharpxrm_servicelicensekey || "";
+    var shown = "key " + mask(key);
+    var when = c.modifiedon ? new Date(c.modifiedon).toLocaleString() : "";
+    if (c.sharpxrm_isvalid) {
+      setStatus("Config", "ok", "Validated \u00b7 " + shown + (when ? " \u00b7 last changed " + when : ""));
+    } else if (SAMPLE.credential.validate === false) {
+      setStatus("Config", "ok", "Saved \u00b7 " + shown + (when ? " \u00b7 last changed " + when : ""));
+    } else {
+      setStatus("Config", "warn", "Saved but not validated \u00b7 " + shown + (when ? " \u00b7 last changed " + when : ""));
+    }
+  }
+
+  /* ---------------- data ---------------- */
+
+  function loadConfig() {
+    var select = "sharpxrm_sharpxrmconfigurationid,sharpxrm_name,sharpxrm_servicelicensekey,sharpxrm_isvalid,sharpxrm_validationservicetype,sharpxrm_id,sharpxrm_transactionpool,modifiedon";
+    return webApi("GET", ENTITY_SET + "?$select=" + select + "&$filter=sharpxrm_name eq '" + escapeOData(SAMPLE.configName) + "'&$top=1")
+      .then(function (r) {
+        state.productInstalled = true;
+        state.config = (r.data && r.data.value && r.data.value[0]) || null;
+        setStatus("Product", "ok", "Installed.");
+      }, function (err) {
+        state.productInstalled = false;
+        if (err.status === 404) {
+          setStatus("Product", "err", "Address Validation for D365 is not installed in this environment. Install it from Microsoft AppSource first.");
+        } else if (err.status === 403) {
+          setStatus("Product", "err", "You do not have access to API Configurations. Ask a system administrator to run this setup.");
+        } else {
+          setStatus("Product", "err", "Could not be checked: " + err.message);
+        }
+      })
+      .then(function () {
+        renderConfig();
+        updateButtons();
+        return loadVerification();
+      });
+  }
+
+  function checkLicence() {
+    if (!state.productInstalled) { setStatus("Licence", "err", "Not available."); return Promise.resolve(); }
+    var input = JSON.stringify({ OperationType: "LicenceCheck", ConfigurationName: SAMPLE.licenceName, AddressEntityId: "" });
+    return webApi("POST", "sharpxrm_AddressValidation", { Input: input }).then(function (r) {
+      var out = null;
+      try { out = r.data && r.data.OutputMessage ? JSON.parse(r.data.OutputMessage) : null; } catch (e) { out = null; }
+      if (!out) { setStatus("Licence", "warn", "The licence service gave no answer. The control will check again when it opens."); return; }
+      if (out.IsValid) {
+        var type = out.LicenceType === 1 ? "Trial" : out.LicenceType === 2 ? "Purchased" : "Active";
+        setStatus("Licence", "ok", type + " licence covers " + SAMPLE.licenceName + ".");
+      } else {
+        setStatus("Licence", "err", (out.Message || "Not licensed") + " \u2014 open the Address Validation settings app to start a trial or activate your licence.");
+      }
+    }, function (err) {
+      setStatus("Licence", "warn", "Could not be checked: " + err.message);
+    });
+  }
+
+  function readCredential() {
+    var key = $("inKey").value.trim();
+    if (!key) { return { error: "Enter your " + SAMPLE.credential.label + "." }; }
+    return { key: key };
+  }
+
+  function saveConfig(cred) {
+    var body = {
+      sharpxrm_servicelicensekey: cred.key,
+      sharpxrm_validationservicetype: SAMPLE.serviceType,
+      sharpxrm_isvalid: false
+    };
+
+    if (state.config) {
+      var id = state.config.sharpxrm_sharpxrmconfigurationid;
+      return webApi("PATCH", ENTITY_SET + "(" + id + ")", body).then(function () { return id; });
+    }
+    body.sharpxrm_name = SAMPLE.configName;
+    return webApi("POST", ENTITY_SET, body, { "Prefer": "return=representation" }).then(function (r) {
+      return r.data.sharpxrm_sharpxrmconfigurationid;
+    });
+  }
+
+  /* Same rule as ApiKeyValidator.IsBrowserOnlyKey: Smarty embedded keys and PostGrid public keys. */
+  function isBrowserOnlyKey(key) {
+    if (SAMPLE.serviceType === SMARTY) { return key.indexOf(":") === -1; }
+    if (SAMPLE.serviceType === POSTGRID) { return /^(live|test)_pk_/.test(key); }
+    return false;
+  }
+
+  function checkKeyInBrowser(key) {
+    var isSmarty = SAMPLE.serviceType === SMARTY;
+    var host = window.location.hostname;
+    var request = isSmarty
+      ? fetch("https://international-autocomplete.api.smarty.com/v2/lookup?key=" + encodeURIComponent(key) + "&search=" + encodeURIComponent("10 Downing") + "&country=GBR&max_results=1")
+      : fetch("https://api.postgrid.com/v1/addver/completions?partialStreet=" + encodeURIComponent("1 E 161st"), { headers: { "x-api-key": key } });
+    return request.then(function (response) {
+      var s = response.status;
+      if (s >= 200 && s < 300) { return { isValid: true, message: "" }; }
+      if (isSmarty && s === 402) {
+        return { isValid: true, message: "Smarty accepted the key. This account has no International Address Autocomplete subscription, so only US suggestions will be available." };
+      }
+      if (s === 401 || s === 403) {
+        return {
+          isValid: false,
+          message: isSmarty
+            ? "Smarty rejected this embedded key from " + host + " (HTTP " + s + "). Check the key and add " + host + " to the key's authorised hosts."
+            : "PostGrid rejected this public key from " + host + " (HTTP " + s + "). Check the key and add https://" + host + " to the key's allowed origins."
+        };
+      }
+      return { isValid: false, message: SAMPLE.providerName + " could not check the key (HTTP " + s + "). Please try again in a minute." };
+    }, function () {
+      return {
+        isValid: false,
+        message: isSmarty
+          ? "Smarty refused the request from " + host + ", or could not be reached. Add " + host + " to the embedded key's authorised hosts, then try again."
+          : SAMPLE.providerName + " could not be reached from your browser. Check your network connection, then try again."
+      };
+    });
+  }
+
+  function validate(id, key) {
+    if (SAMPLE.credential.validate === false) {
+      return Promise.resolve({ isValid: false, notChecked: true, message: "" });
+    }
+    if (isBrowserOnlyKey(key)) {
+      return checkKeyInBrowser(key).then(function (check) {
+        if (!check.isValid) { return check; }
+        return webApi("PATCH", ENTITY_SET + "(" + id + ")", { sharpxrm_isvalid: true }).then(function () { return check; });
+      });
+    }
+    return webApi("POST", ENTITY_SET + "(" + id + ")/Microsoft.Dynamics.CRM.sharpxrm_ConfiguratValidateAPIKey", {}).then(function (r) {
+      var d = r.data || {};
+      return { isValid: !!d.IsValid, message: d.Result || "" };
+    }, function (err) {
+      return { isValid: false, message: err.message };
+    });
+  }
+
+  function onSave() {
+    clearBanners();
+    var cred = readCredential();
+    if (cred.error) { banner("err", cred.error); return; }
+    setBusy(true);
+    var pending = banner("info", "Saving and validating your key\u2026");
+    var savedId = null;
+    saveConfig(cred).then(function (id) {
+      savedId = id;
+      return validate(id, cred.key);
+    }).then(function (result) {
+      pending.remove();
+      if (result.isValid) {
+        banner("ok", "Your key is saved and validated. You can now try the sample forms (refresh the browser tab first if a form was already open).");
+        if (result.message) { banner("info", result.message); }
+      } else if (result.notChecked || /not available/i.test(result.message || "")) {
+        banner("info", "Your key is saved. " + SAMPLE.providerName + " keys cannot be checked automatically yet, so try the sample form to confirm the key works.");
+      } else {
+        banner("warn", "Your key is saved, but it could not be validated: " + (result.message || "no details were returned.") + " Fix the key and save again.");
+      }
+    }, function (err) {
+      pending.remove();
+      banner("err", (savedId ? "The key was saved, but validation failed: " : "The key could not be saved: ") + err.message);
+    }).then(function () {
+      if (savedId && SAMPLE.verification && SAMPLE.verification.config === "sameKey") {
+        return setUpMelissaGlobal(cred.key);
+      }
+    }).then(function () {
+      setBusy(false);
+      return loadConfig();
+    });
+  }
+
+  /* ---------------- background verification ---------------- */
+
+  function findConfig(name) {
+    var select = "sharpxrm_sharpxrmconfigurationid,sharpxrm_servicelicensekey,sharpxrm_isvalid,modifiedon";
+    return webApi("GET", ENTITY_SET + "?$select=" + select + "&$filter=sharpxrm_name eq '" + escapeOData(name) + "'&$top=1")
+      .then(function (r) { return (r.data && r.data.value && r.data.value[0]) || null; });
+  }
+
+  function upsertConfig(existing, name, serviceType, key) {
+    var body = { sharpxrm_servicelicensekey: key, sharpxrm_validationservicetype: serviceType, sharpxrm_isvalid: false };
+    if (existing) {
+      var id = existing.sharpxrm_sharpxrmconfigurationid;
+      return webApi("PATCH", ENTITY_SET + "(" + id + ")", body).then(function () { return id; });
+    }
+    body.sharpxrm_name = name;
+    return webApi("POST", ENTITY_SET, body, { "Prefer": "return=representation" }).then(function (r) {
+      return r.data.sharpxrm_sharpxrmconfigurationid;
+    });
+  }
+
+  function validateOnServer(id) {
+    return webApi("POST", ENTITY_SET + "(" + id + ")/Microsoft.Dynamics.CRM.sharpxrm_ConfiguratValidateAPIKey", {}).then(function (r) {
+      var d = r.data || {};
+      return { isValid: !!d.IsValid, message: d.Result || "" };
+    }, function (err) {
+      return { isValid: false, message: err.message };
+    });
+  }
+
+  function verifyBanner(level, text) {
+    var div = document.createElement("div");
+    div.className = "banner " + level;
+    div.textContent = text;
+    $("verifyMessages").appendChild(div);
+    return div;
+  }
+
+  /* Melissa: the flows call Melissa Global Address Verification through Field Mappings, with the same licence key. */
+  function setUpMelissaGlobal(key) {
+    var v = SAMPLE.verification;
+    var pending = banner("info", "Setting up Melissa Global Address Verification for the background flows\u2026");
+    return findConfig(v.configName).then(function (existing) {
+      return upsertConfig(existing, v.configName, v.serviceType, key);
+    }).then(function (id) {
+      return validateOnServer(id).then(function (check) {
+        return upsertFieldMapping("account", id).then(function () { return upsertFieldMapping("contact", id); }).then(function () { return check; });
+      });
+    }).then(function (check) {
+      pending.remove();
+      if (check.isValid) {
+        banner("ok", "Melissa Global Address Verification is ready for the background flows (API configuration " + v.configName + " and its Field Mappings).");
+      } else {
+        banner("warn", "The Field Mappings for the background flows are saved, but Melissa Global Address Verification could not validate the key: " + (check.message || "no details were returned."));
+      }
+    }, function (err) {
+      pending.remove();
+      banner("err", "Melissa Global Address Verification could not be set up for the background flows: " + err.message);
+    });
+  }
+
+  function upsertFieldMapping(table, configId) {
+    var name = SAMPLE.verification.fieldMappings[table];
+    var body = {
+      sharpxrm_configurationname: name,
+      sharpxrm_entityname: table,
+      sharpxrm_entitycollectionname: table + "s",
+      "sharpxrm_apiconfigurationrecord@odata.bind": "/" + ENTITY_SET + "(" + configId + ")",
+      sharpxrm_addressfieldline1: "address1_line1",
+      sharpxrm_addressfieldunitnumber: "address1_line2",
+      sharpxrm_addressfieldcity: "address1_city",
+      sharpxrm_addressfieldcounty: "address1_county",
+      sharpxrm_addressfieldstateorprovince: "address1_stateorprovince",
+      sharpxrm_addressfieldzippostalcode: "address1_postalcode",
+      sharpxrm_addressfieldcountry: "address1_country",
+      sharpxrm_addressfieldlatitude: "address1_latitude",
+      sharpxrm_addressfieldlongitude: "address1_longitude",
+      sharpxrm_addressfieldfulladdress: SAMPLE.verification.melissaFullAddressColumn,
+      sharpxrm_usesamefieldsforinputandoutput: true,
+      sharpxrm_countryfieldtype: false,
+      sharpxrm_countryfieldtypedestination: false,
+      sharpxrm_outputlanguage: 229000000,
+      sharpxrm_customlanguage: 229000000,
+      sharpxrm_global_servicetypes: "229000000",
+      sharpxrm_globaladdress_outputgeo: true,
+      sharpxrm_globaladdress_usstandardizationtype: 229000000,
+      sharpxrm_globaladdressoutputscript: 229000000,
+      sharpxrm_separatesuitefromaddressline1: true,
+      sharpxrm_global_includeremnant: false,
+      sharpxrm_global_displaybuttononforms: false
+    };
+    return webApi("GET", "sharpxrm_addressvalidationfieldsconfigs?$select=sharpxrm_addressvalidationfieldsconfigid&$filter=sharpxrm_configurationname eq '" + escapeOData(name) + "'&$top=1")
+      .then(function (r) {
+        var existing = r.data && r.data.value && r.data.value[0];
+        if (existing) {
+          return webApi("PATCH", "sharpxrm_addressvalidationfieldsconfigs(" + existing.sharpxrm_addressvalidationfieldsconfigid + ")", body);
+        }
+        return webApi("POST", "sharpxrm_addressvalidationfieldsconfigs", body);
+      });
+  }
+
+  function onSaveVerify() {
+    $("verifyMessages").innerHTML = "";
+    var key = $("inVerifyKey").value.trim();
+    var v = SAMPLE.verification;
+    if (!key) { verifyBanner("err", "Enter your " + v.credential.label + "."); return; }
+    state.busy = true; updateButtons();
+    var pending = verifyBanner("info", "Saving and validating the key for the background flows\u2026");
+    findConfig(v.configName).then(function (existing) {
+      return upsertConfig(existing, v.configName, v.serviceType, key);
+    }).then(validateOnServer).then(function (check) {
+      pending.remove();
+      if (check.isValid) {
+        verifyBanner("ok", "The key for the background flows is saved and validated.");
+        if (check.message) { verifyBanner("info", check.message); }
+      } else {
+        verifyBanner("warn", "The key is saved, but it could not be validated: " + (check.message || "no details were returned.") + " Fix the key and save again.");
+      }
+    }, function (err) {
+      pending.remove();
+      verifyBanner("err", "The key could not be saved: " + err.message);
+    }).then(function () {
+      state.busy = false; updateButtons();
+      return loadVerification();
+    });
+  }
+
+  function loadVerification() {
+    var v = SAMPLE.verification;
+    if (!v || !state.productInstalled) { return Promise.resolve(); }
+    var configPromise = v.config === "sample" ? Promise.resolve(state.config) : findConfig(v.configName);
+    return configPromise.then(function (c) {
+      var when = c && c.modifiedon ? " \u00b7 last changed " + new Date(c.modifiedon).toLocaleString() : "";
+      if (v.config === "sample") {
+        setStatus("Verify", c ? "ok" : "warn", c ? "The flows use the key from step 1." : "The flows use the key from step 1, which is not set up yet.");
+      } else if (!c) {
+        setStatus("Verify", "warn", v.config === "sameKey" ? "Created when you save the Melissa key in step 1." : "Not set up yet. Enter the key in step 2.");
+      } else if (c.sharpxrm_isvalid) {
+        setStatus("Verify", "ok", "Validated \u00b7 " + v.configName + " \u00b7 key " + mask(c.sharpxrm_servicelicensekey) + when);
+      } else {
+        setStatus("Verify", "warn", "Saved but not validated \u00b7 " + v.configName + " \u00b7 key " + mask(c.sharpxrm_servicelicensekey) + when);
+      }
+    }, function (err) {
+      setStatus("Verify", "warn", "Could not be checked: " + err.message);
+    }).then(loadFlows);
+  }
+
+  function loadFlows() {
+    var v = SAMPLE.verification;
+    return Promise.all(v.flows.map(function (f) {
+      return webApi("GET", "workflows(" + f.id + ")?$select=statecode").then(function (r) {
+        return { name: f.name, on: r.data && r.data.statecode === 1, found: true };
+      }, function (err) {
+        return { name: f.name, on: false, found: err.status !== 404, error: err };
+      });
+    })).then(function (results) {
+      var missing = results.filter(function (r) { return !r.found; });
+      var off = results.filter(function (r) { return r.found && !r.on && !r.error; });
+      var unknown = results.filter(function (r) { return r.found && r.error; });
+      if (missing.length) {
+        setStatus("Flows", "err", "Not found. Import the complete sample solution again.");
+      } else if (unknown.length) {
+        setStatus("Flows", "warn", "Could not be checked (" + unknown[0].error.message + ").");
+      } else if (off.length) {
+        setStatus("Flows", "warn", "Off: " + off.map(function (r) { return r.name; }).join(", ") +
+          ". In Power Automate, open Solutions > " + SAMPLE.solutionName + ", set the connection, and turn the flows on.");
+      } else {
+        setStatus("Flows", "ok", "On. They check an address whenever it is added or changed, write the result back and add a note.");
+      }
+    });
+  }
+
+  function renderVerification() {
+    var v = SAMPLE.verification;
+    if (!v) { return; }
+    $("rowVerify").style.display = "";
+    $("rowFlows").style.display = "";
+    $("verifyCard").style.display = "";
+    $("tryHeading").textContent = "3. Try it";
+    $("verifyIntro").textContent = "Two Power Automate flows, " + v.flows.map(function (f) { return "\u201c" + f.name + "\u201d"; }).join(" and ") +
+      ", check an address with " + v.label + " whenever it is added or changed. They write the verified address back to the standard address columns and add a note to the record with everything " +
+      SAMPLE.providerName + " returned. " + (v.keyNote || "");
+    if (v.config === "separate" && v.credential) {
+      $("verifyFields").innerHTML = '<label for="inVerifyKey"></label><div class="key-wrap"><input id="inVerifyKey" type="password" autocomplete="new-password" spellcheck="false" /><button type="button" id="btnShowVerify">Show</button></div>';
+      document.querySelector('label[for="inVerifyKey"]').textContent = v.credential.label;
+      $("inVerifyKey").placeholder = v.credential.placeholder || "";
+      (v.credential.hints || []).forEach(function (h) {
+        var li = document.createElement("li");
+        li.textContent = h;
+        $("verifyHints").appendChild(li);
+      });
+      $("verifyActions").style.display = "";
+      $("btnSaveVerify").addEventListener("click", onSaveVerify);
+      $("btnShowVerify").addEventListener("click", function () {
+        var input = $("inVerifyKey");
+        var show = input.type === "password";
+        input.type = show ? "text" : "password";
+        this.textContent = show ? "Hide" : "Show";
+      });
+    }
+  }
+
+  function setBusy(busy) { state.busy = busy; updateButtons(); }
+
+  function updateButtons() {
+    $("btnSave").disabled = state.busy || !state.productInstalled;
+    if ($("btnSaveVerify")) { $("btnSaveVerify").disabled = state.busy || !state.productInstalled; }
+  }
+
+  /* ---------------- navigation ---------------- */
+
+  function openNew(entity) {
+    var x = xrm();
+    var formId = SAMPLE.forms[entity];
+    if (x) { x.Navigation.openForm({ entityName: entity, formId: formId }); return; }
+    window.open(window.location.origin + "/main.aspx?pagetype=entityrecord&etn=" + entity + "&formid=" + formId, "_blank");
+  }
+
+  function openQuickCreate(entity) {
+    var x = xrm();
+    var formId = (SAMPLE.quickCreateForms || {})[entity];
+    if (x) { x.Navigation.openForm({ entityName: entity, formId: formId, useQuickCreateForm: true }); return; }
+    banner("info", "Open the sample app and use + New on the " + entity + " list to see the quick create form.");
+  }
+
+  function openList(entity) {
+    var x = xrm();
+    if (x) { x.Navigation.navigateTo({ pageType: "entitylist", entityName: entity }); return; }
+    window.open(window.location.origin + "/main.aspx?pagetype=entitylist&etn=" + entity, "_blank");
+  }
+
+  /* ---------------- start ---------------- */
+
+  if (!SAMPLE) {
+    document.body.textContent = "This page has not been configured by the sample build tool.";
+    return;
+  }
+  renderStatic();
+  renderVerification();
+  $("btnSave").addEventListener("click", onSave);
+  $("btnNewAccount").addEventListener("click", function () { openNew("account"); });
+  $("btnNewContact").addEventListener("click", function () { openNew("contact"); });
+  $("btnQuickAccount").addEventListener("click", function () { openQuickCreate("account"); });
+  $("btnQuickContact").addEventListener("click", function () { openQuickCreate("contact"); });
+  $("btnAccounts").addEventListener("click", function () { openList("account"); });
+  $("btnContacts").addEventListener("click", function () { openList("contact"); });
+  loadConfig().then(checkLicence);
+})();
+</script>
+</body>
+</html>

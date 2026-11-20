@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebResource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <WebResourceId>{fc951cba-36cf-5da0-ba8f-363334f535b9}</WebResourceId>
+  <Name>sxs_/byteplant/setup.html</Name>
+  <DisplayName>Byteplant sample - Setup</DisplayName>
+  <Description>Enter the Byteplant API key for the sample app.</Description>
+  <WebResourceType>1</WebResourceType>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <IsEnabledForMobileClient>0</IsEnabledForMobileClient>
+  <IsAvailableForMobileOffline>0</IsAvailableForMobileOffline>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <IsHidden>0</IsHidden>
+  <FileName>/WebResources/sxs_byteplantsetuphtmlFC951CBA-36CF-5DA0-BA8F-363334F535B9</FileName>
+</WebResource>

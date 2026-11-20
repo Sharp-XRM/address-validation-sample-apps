@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AppModule>
+  <UniqueName>sxs_CanadaPostSample</UniqueName>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <WebResourceId>953b9fac-1e5e-e611-80d6-00155ded156f</WebResourceId>
+  <OptimizedFor></OptimizedFor>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <FormFactor>1</FormFactor>
+  <ClientType>4</ClientType>
+  <NavigationType>0</NavigationType>
+  <AppModuleComponents>
+    <AppModuleComponent type="1" schemaName="account" />
+    <AppModuleComponent type="1" schemaName="contact" />
+    <AppModuleComponent type="60" id="{357ee860-82d0-57b4-9619-669208212bfc}" />
+    <AppModuleComponent type="60" id="{51e9fc6c-5734-55eb-9e69-a1f256675cb1}" />
+    <AppModuleComponent type="60" id="{7f2760ee-681b-5af0-a29b-b797ad879c7a}" />
+    <AppModuleComponent type="60" id="{d6b4d37c-4abd-5dfa-8b4c-d75a10a7a898}" />
+    <AppModuleComponent type="62" schemaName="sxs_CanadaPostSample" />
+  </AppModuleComponents>
+  <AppModuleRoleMaps>
+    <Role id="{627090ff-40a3-4053-8790-584edc5be201}" />
+    <Role id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+  </AppModuleRoleMaps>
+  <LocalizedNames>
+    <LocalizedName description="Canada Post Address Sample" languagecode="1033" />
+  </LocalizedNames>
+  <Descriptions>
+    <Description description="Try the Canada Post address autocomplete control on sample Account and Contact forms. Start with Setup to enter your API key." languagecode="1033" />
+  </Descriptions>
+  <appsettings>
+    <appsetting settingdefinitionid.uniquename="AppChannel">
+      <iscustomizable>1</iscustomizable>
+      <value>1</value>
+    </appsetting>
+  </appsettings>
+</AppModule>
