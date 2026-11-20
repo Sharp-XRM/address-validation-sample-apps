@@ -10,8 +10,8 @@ Ready-to-import sample apps for **[Address Validation for Dataverse](https://app
 | [Azure Maps](AzureMaps) | Azure Maps subscription key | Azure Maps address search | [zip](dist/SharpXrmSampleAzureMaps_1_0_0_0_managed.zip) |
 | [Melissa Express Entry](MelissaExpressEntry) | Melissa licence key with Global Express Entry and Global Address Verification | Melissa Global Address Verification | [zip](dist/SharpXrmSampleMelissaExpressEntry_1_0_0_0_managed.zip) |
 | [Canada Post](CanadaPost) | Canada Post AddressComplete key | None (Canada Post has no background verification) | [zip](dist/SharpXrmSampleCanadaPost_1_0_0_0_managed.zip) |
-| [PostGrid](PostGrid) *(preview)* | PostGrid public key (`live_pk_`) for autocomplete and secret key (`live_sk_`) for the flows | PostGrid Address Verification (US/Canada and international) | [zip](dist/SharpXrmSamplePostGrid_1_0_0_0_managed.zip) |
-| [Smarty](Smarty) *(preview)* | Smarty embedded key for autocomplete and secret key (Auth ID:Auth Token) for the flows | Smarty US and International Street Address | [zip](dist/SharpXrmSampleSmarty_1_0_0_0_managed.zip) |
+| [PostGrid](PostGrid) | PostGrid public key (`live_pk_`) for autocomplete and secret key (`live_sk_`) for the flows | PostGrid Address Verification (US/Canada and international) | [zip](dist/SharpXrmSamplePostGrid_1_0_0_0_managed.zip) |
+| [Smarty](Smarty) | Smarty embedded key for autocomplete and secret key (Auth ID:Auth Token) for the flows | Smarty US and International Street Address | [zip](dist/SharpXrmSampleSmarty_1_0_0_0_managed.zip) |
 | [Byteplant](Byteplant) *(preview)* | Byteplant Address Validator API key | Byteplant Address Validator | [zip](dist/SharpXrmSampleByteplant_1_0_0_0_managed.zip) |
 
 Every managed and unmanaged solution is also attached to the [latest release](../../releases/latest). Use the **unmanaged** solution when you want to change a sample.
@@ -19,7 +19,7 @@ Every managed and unmanaged solution is also attached to the [latest release](..
 ## Before you start
 
 - A Dynamics 365 or Dataverse environment with **Address Validation for Dataverse** installed and licensed ([AppSource](https://appsource.microsoft.com/product/dynamics-365/sharpxrm.dataqualitypa)). A trial licence works, but it has to cover the provider you want to try.
-- **Preview providers:** the PostGrid, Smarty and Byteplant samples need a version of Address Validation for Dataverse that includes those providers. Contact [SharpXRM](https://www.sharpxrm.com) for access. The Melissa Express Entry sample needs Express Entry control 0.2.0 or later.
+- **Preview provider:** the Byteplant sample needs a version of Address Validation for Dataverse that includes Byteplant. Contact [SharpXRM](https://www.sharpxrm.com) for access. The Melissa Express Entry sample needs Express Entry control 0.2.0 or later.
 - A **System Administrator** or **System Customizer** to import the solution, and a System Administrator or **SharpXRM - Address Validation Administrator** to run the Setup page.
 - An account and an API key from the provider. Each sample's README says where to get one.
 
